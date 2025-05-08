@@ -1,6 +1,6 @@
 import { Route, Switch, useLocation } from "react-router-dom";
-import SingIn from "../../pages/auth/sign-in";
-import singUp from "../../pages/auth/sign-up";
+import SignIn from "../../pages/auth/sign-in";
+import signUp from "../../pages/auth/sign-up";
 import React from 'react';
 
 const auth = () => {
@@ -21,10 +21,10 @@ const auth = () => {
         <div className="grid lg:grid-cols-12 h-full">
           <div className="col-span-7 flex justify-center items-center">
             <Switch>
-              <Route exact path="/auth" component={SingIn} />
-              <Route path="/auth/sing-in" component={SingIn} />
-              <Route path="/auth/sing-up" component={singUp} />
-              <Route component={SingIn} />
+              <Route exact path="/auth" component={SignIn} />
+              <Route path="/auth/sign-in" component={SignIn} />
+              <Route path="/auth/sign-up" component={signUp} />
+              <Route component={SignIn} />
             </Switch>
           </div>
 

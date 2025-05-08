@@ -7,7 +7,10 @@ import React from "react";
 
 const signIn = () => {
 
+  const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
   const showResult = async (values: SingIn) => {
+    await sleep(800);
     console.log('Formulario enviado', values);
   }
 
@@ -15,15 +18,31 @@ const signIn = () => {
     <Flex direction="column" align="center" gap={6} className="h-full">
       <Flex className="flex-1 flex p-5" align="center" justify="center" direction="column" gap={10}>
         <Heading type="h1" weight="normal" align="center" className="whitespace-normal">Te damos la bienvenida a preventiva.com</Heading>
-        <Heading type="h3" align="center" className="whitespace-normal font-normal mb-12">Inicia sesión en tu cuenta.</Heading>
+        <Heading type="h3" align="center" className="whitespace-normal font-normal">Inicia sesión en tu cuenta.</Heading>
         <div className="lg:w-[400px]">
-          <FormFF onSubmit={showResult} render={({ handleSubmit }) => (
+          <FormFF onSubmit={showResult} render={({ handleSubmit, submitting, values }) => (
             <form onSubmit={handleSubmit} className="p-5 rounded-lg flex flex-col gap-4">
               <Flex direction="column" gap={8}>
-                <Field name="email" component="input"/>
+
+                <Field name="email" component="input" validate={(value) => (value ? undefined : 'Required')} />
+                <Field name="password" placeholder="Contraseña" type="text" validate={(value) => (value ? undefined : 'Required')} >
+                  {({ input, meta, placeholder}) => (
+                   <div>
+                    <input placeholder={placeholder} {...input}/>
+                    {meta.error && meta.touched && <span>{meta.error}</span>} 
+                   </div>
+                  )}
+                </Field>
+
+                
+
+                <TextField size="medium" name="email" type="email" title="Correo electrónico" placeholder=""></TextField>
+
+                <TextField size="medium" name="email" type="password" title="Contraseña" placeholder=""></TextField>
                
                 <Link text="¿Olvidaste tu contraseña?" className="w-auto" href="/"></Link>
-                <Button type="submit" loaderClassName="" size="medium" className="flex w-full" rightIcon={MoveArrowRight}>Iniciar sesión</Button>
+                <Button type="submit" loaderClassName="" size="medium" className="flex w-full" disabled={submitting} rightIcon={MoveArrowRight}>Iniciar sesión</Button>
+                
                 <Flex gap="small" direction="row" justify="center">
                   <Text>¿Aún no tienes una cuenta?</Text>
                   <Links to="/auth/sign-up" className="text-[16px]">
@@ -43,3 +62,10 @@ const signIn = () => {
 };
 
 export default signIn
+
+
+/*<!--<Field name="password" placeholder="Contraseña" type="text" validate={(value) => (value ? undefined : 'Required')} >
+                  {({ input, meta }) => (
+                    <TextField size="medium" name="email" type="password" title="Contraseña" placeholder=""></TextField>
+                  )}
+                </Field>*/ 
