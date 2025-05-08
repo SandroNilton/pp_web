@@ -3,6 +3,7 @@ import { MoveArrowRight } from "@vibe/icons";
 import { SingIn } from "../../models/auth/sign-in";
 import { Link as Links } from "react-router-dom";
 import { Form as FormFF, Field } from "react-final-form";
+import TextInput from "../../components/common/form/TextInput";
 import React from "react";
 
 const signIn = () => {
@@ -24,8 +25,9 @@ const signIn = () => {
             <form onSubmit={handleSubmit} className="p-5 rounded-lg flex flex-col gap-4">
               <Flex direction="column" gap={8}>
 
-                <Field name="email" component="input" validate={(value) => (value ? undefined : 'Required')} />
-                <Field name="password" placeholder="Contraseña" type="text" validate={(value) => (value ? undefined : 'Required')} >
+                <Field name="email" component={TextInput} type="text" size="medium" placeholder="nombre@empresa.com" />
+                
+                <Field name="password" component={TextInput} type="text" size="medium" placeholder="contraseña" >
                   {({ input, meta, placeholder}) => (
                    <div>
                     <input placeholder={placeholder} {...input}/>

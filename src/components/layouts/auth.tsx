@@ -9,8 +9,8 @@ const auth = () => {
 
   const backgroundImages = { 
     "/auth": "https://dapulse-res.cloudinary.com/image/upload/monday_platform/signup/signup-right-side-assets-new-flow/welcome-to-monday.png",
-    "/auth/sing-in": "https://dapulse-res.cloudinary.com/image/upload/monday_platform/signup/signup-right-side-assets-new-flow/welcome-to-monday.png",
-    "/auth/sing-up": "https://dapulse-res.cloudinary.com/image/upload/monday_platform/signup/signup-right-side-assets-new-flow/set-up-your-account.png"
+    "/auth/sign-in": "https://dapulse-res.cloudinary.com/image/upload/monday_platform/signup/signup-right-side-assets-new-flow/welcome-to-monday.png",
+    "/auth/sign-up": "https://dapulse-res.cloudinary.com/image/upload/monday_platform/signup/signup-right-side-assets-new-flow/set-up-your-account.png"
   };
   const backgroundImage = backgroundImages[location.pathname as keyof typeof backgroundImages] || backgroundImages["/auth"];
 
