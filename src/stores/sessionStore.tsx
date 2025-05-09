@@ -16,10 +16,13 @@ export default class SessionStore {
     return !!this.session;
   }
 
-  @action setSession = async (values: ISessionFormValues) => {
+  @action login = async (values: ISessionFormValues) => {
     try {
       var session = await agent.Auth.login(values);
+      console.log(session);
+      
       this.session = session;
+      console.log(session);
     } catch (error) {
       console.error("Login failed", error);
     }

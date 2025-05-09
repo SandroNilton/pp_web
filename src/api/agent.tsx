@@ -31,6 +31,8 @@ const Companies = {
 }
 
 const Auth = {
+  
+  
   login: (session: ISessionFormValues) : Promise<ISession> => request.post('/auth/login', session),
   register: (session: ISessionFormValues) : Promise<ISession> => request.post('/auth/register', session),
   current: (): Promise<ISession> => request.get('/auth/'),

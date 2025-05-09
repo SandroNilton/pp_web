@@ -1,18 +1,20 @@
 import { Button, Flex, Heading, Link, Text, TextField } from "@vibe/core"
 import { MoveArrowRight } from "@vibe/icons";
-import { SingIn } from "../../models/auth/sign-in";
 import { Link as Links } from "react-router-dom";
 import { Form as FormFF, Field } from "react-final-form";
 import TextInput from "../../components/common/form/TextInput";
-import React from "react";
+import React, { useContext } from "react";
+import { RootStoreContext } from "../../stores/rootStore";
+import { ISessionFormValues } from "../../models/auth/session";
 
 const signIn = () => {
 
-  const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+  const rootStore = useContext(RootStoreContext);
+  const { login } = rootStore.sessionStore;
 
-  const showResult = async (values: SingIn) => {
-    await sleep(800);
-    console.log('Formulario enviado', values);
+  const handleSubmitForm = async (values: ISessionFormValues) => {
+    login(values);
+    console.log(values);
   }
 
   return (
@@ -21,26 +23,16 @@ const signIn = () => {
         <Heading type="h1" weight="normal" align="center" className="whitespace-normal">Te damos la bienvenida a preventiva.com</Heading>
         <Heading type="h3" align="center" className="whitespace-normal font-normal">Inicia sesión en tu cuenta.</Heading>
         <div className="lg:w-[400px]">
-          <FormFF onSubmit={showResult} render={({ handleSubmit, submitting, values }) => (
+          <FormFF onSubmit={handleSubmitForm} render={({ handleSubmit, submitting, values }) => (
+
+console.log("Form values:", values),
+
             <form onSubmit={handleSubmit} className="p-5 rounded-lg flex flex-col gap-4">
               <Flex direction="column" gap={8}>
 
                 <Field name="email" component={TextInput} type="text" size="medium" placeholder="nombre@empresa.com" />
                 
-                <Field name="password" component={TextInput} type="text" size="medium" placeholder="contraseña" >
-                  {({ input, meta, placeholder}) => (
-                   <div>
-                    <input placeholder={placeholder} {...input}/>
-                    {meta.error && meta.touched && <span>{meta.error}</span>} 
-                   </div>
-                  )}
-                </Field>
-
-                
-
-                <TextField size="medium" name="email" type="email" title="Correo electrónico" placeholder=""></TextField>
-
-                <TextField size="medium" name="email" type="password" title="Contraseña" placeholder=""></TextField>
+                <Field name="password" component={TextInput} type="text" size="medium" placeholder="contraseña" />
                
                 <Link text="¿Olvidaste tu contraseña?" className="w-auto" href="/"></Link>
                 <Button type="submit" loaderClassName="" size="medium" className="flex w-full" disabled={submitting} rightIcon={MoveArrowRight}>Iniciar sesión</Button>

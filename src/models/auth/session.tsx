@@ -6,6 +6,6 @@ export interface ISession {
 
 export interface ISessionFormValues {
   userName: string;
-  email: string;
-  password: string;
+  Email: string;
+  Password: string;
 }

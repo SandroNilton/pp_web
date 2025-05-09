@@ -18,13 +18,15 @@
     "@vibe/core": "^3.47.0",
     "@vibe/icons": "^1.7.1",
     "axios": "^0.21.1",
+    "clsx": "^2.1.1",
     "final-form": "^4.20.10",
     "mobx": "^6.13.7",
     "mobx-react": "^9.2.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-final-form": "^6.5.9",
-    "react-router-dom": "^5.3.4"
+    "react-router-dom": "^5.3.4",
+    "tailwind-merge": "^3.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.27.1",
