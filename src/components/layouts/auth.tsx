@@ -14,7 +14,6 @@ const auth = () => {
   };
   const backgroundImage = backgroundImages[location.pathname as keyof typeof backgroundImages] || backgroundImages["/auth"];
 
-
   return (
     <div className="flex flex-col w-full h-screen">
       <div className="h-full">
@@ -27,7 +26,6 @@ const auth = () => {
               <Route component={SignIn} />
             </Switch>
           </div>
-
           <div className="col-span-5 lg:flex hidden bg-cover bg-no-repeat bg-center" style={{ backgroundImage: `url("${backgroundImage}")` }}></div>
         </div>
       </div> 

@@ -1,9 +1,7 @@
-import { action, configure, makeObservable, observable, runInAction } from 'mobx';
+import { action, makeObservable, observable, runInAction } from 'mobx';
 import { IBoard } from '../models/board';
 import { RootStore } from './rootStore';
 import agent from '../api/agent';
-
-configure({ enforceActions: 'always' });
 
 export default class BoardStore {
   @observable boards: IBoard[] = [];

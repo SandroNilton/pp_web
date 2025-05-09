@@ -1,6 +1,9 @@
 import SessionStore from "./sessionStore";
 import BoardStore from "./BoardStore";
 import { createContext } from "react";
+import { configure } from "mobx";
+
+configure({ enforceActions: 'always' });
 
 export class RootStore {
   sessionStore : SessionStore;
