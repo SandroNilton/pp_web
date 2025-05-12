@@ -8,8 +8,7 @@ const App: React.FC = () => {
     <Router>
       <Switch>
         <Route path="/auth" exact component={Auth}></Route>
-        <Route path="/auth/*" exact component={Auth}></Route>
-        <Route path="/*" exact component={Main}></Route>
+        <Route path="/" exact component={Main}></Route>
       </Switch>
     </Router>
   );

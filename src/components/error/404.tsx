@@ -1,5 +1,6 @@
 import { Heading, Text } from '@vibe/core';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const NotFound = () => {
   return (
@@ -8,6 +9,7 @@ const NotFound = () => {
       <Heading type='h2' align='center' className='whitespace-normal'>No hemos podido encontrar el contenido que buscabas</Heading>
       <Text type='text2' align='center' className='whitespace-normal font-poppins'>
         Rastreamos estos errores automáticamente, pero si el problema vuelve a ocurrir.</Text>
+        <Link to="/"></Link>
     </div>
   );
 };

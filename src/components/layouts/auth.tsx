@@ -2,6 +2,8 @@ import { Route, Switch, useLocation } from "react-router-dom";
 import SignIn from "../../pages/auth/sign-in";
 import signUp from "../../pages/auth/sign-up";
 import React from 'react';
+import NotFound from "../error/404";
+import signIn from "../../pages/auth/sign-in";
 
 const auth = () => {
 
@@ -23,7 +25,7 @@ const auth = () => {
               <Route exact path="/auth" component={SignIn} />
               <Route path="/auth/sign-in" component={SignIn} />
               <Route path="/auth/sign-up" component={signUp} />
-              <Route component={SignIn} />
+              <Route path="*" component={signIn} />
             </Switch>
           </div>
           <div className="col-span-5 lg:flex hidden bg-cover bg-no-repeat bg-center" style={{ backgroundImage: `url("${backgroundImage}")` }}></div>
