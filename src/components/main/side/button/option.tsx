@@ -17,9 +17,9 @@ const OptionButton: React.FC<OptionProps> = ({ icon, label, iconColor, onClick }
         <Icon icon={icon} className={`${iconColor}`} iconSize={18} />
         <div>{label}</div>
       </div>
-      <Button kind='tertiary' size='xs' onClick={alert} noSidePadding className='px-1'>
+      {/*<Button kind='tertiary' size='xs' onClick={alert} noSidePadding className='px-1'>
         <Icon icon={Add} iconSize={15}/>
-      </Button>
+      </Button>*/}
     </Button>
   );
 

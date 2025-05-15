@@ -17,7 +17,7 @@ const signIn = () => {
   });
 
   const rootStore = useContext(RootStoreContext);
-  const { login,  } = rootStore.sessionStore;
+  const { login } = rootStore.sessionStore;
 
   const handleSubmitForm = async (values: ISessionFormValues) => {
     return login(values).catch((error) => ({[FORM_ERROR]: error}));

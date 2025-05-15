@@ -16,7 +16,7 @@ export default class BoardStore {
     try {
       var response = await agent.Boards.list();
       runInAction(() =>
-        response.forEach((board) => this.boards.push(board)),
+        response.forEach((board) => this.boards.push(board)), 
       );
     } catch (error) {
       console.error(error);

@@ -26,7 +26,7 @@ class Favorite extends Component<{}, IState> {
   }
 
   componentDidMount() {
-    axios.get<IBoard[]>('http://localhost:5099/api/boards')
+    axios.get<IBoard[]>('http://localhost:5001/api/board')
     .then((response) => {
       this.setState({ boards: response.data, loading: false }); // Setear loading a false después de la respuesta
     })

@@ -21,9 +21,6 @@ const ItemSide: React.FC<ItemSideProps> = ({ route, icon, label, iconColor, onCl
           <Icon icon={icon} className={`${iconColor}`} iconSize={18} />
           <div>{label}</div>
         </div>
-        {/*<Button kind='tertiary' size='xs' onClick={alert} noSidePadding className='px-1'>
-          <Icon icon={Add} iconSize={16}/>
-        </Button>*/}
       </Button>
     );
   }
@@ -37,5 +34,10 @@ const ItemSide: React.FC<ItemSideProps> = ({ route, icon, label, iconColor, onCl
     </Link>
   );
 }
+
+
+ {/*<Button kind='tertiary' size='xs' onClick={alert} noSidePadding className='px-1'>
+          <Icon icon={Add} iconSize={16}/>
+        </Button>*/}
 
 export default ItemSide;
