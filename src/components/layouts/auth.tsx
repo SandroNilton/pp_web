@@ -2,7 +2,6 @@ import { Route, Switch, useLocation } from "react-router-dom";
 import SignIn from "../../pages/auth/sign-in";
 import signUp from "../../pages/auth/sign-up";
 import React from 'react';
-import NotFound from "../error/404";
 import signIn from "../../pages/auth/sign-in";
 
 const auth = () => {

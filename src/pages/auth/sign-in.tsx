@@ -7,15 +7,20 @@ import React, { useContext } from "react";
 import { RootStoreContext } from "../../stores/rootStore";
 import { ISessionFormValues } from "../../models/auth/session";
 import { FORM_ERROR } from "final-form";
+import { combineValidators, isRequired } from "revalidate";
 
 const signIn = () => {
+
+  const validate = combineValidators({
+    email : isRequired('email'),
+    password : isRequired('password'),
+  });
 
   const rootStore = useContext(RootStoreContext);
   const { login,  } = rootStore.sessionStore;
 
   const handleSubmitForm = async (values: ISessionFormValues) => {
     return login(values).catch((error) => ({[FORM_ERROR]: error}));
-    console.log(values);
   }
 
   return (
@@ -24,7 +29,7 @@ const signIn = () => {
         <Heading type="h1" weight="normal" align="center" className="whitespace-normal">Te damos la bienvenida a preventiva.com</Heading>
         <Heading type="h3" align="center" className="whitespace-normal font-normal">Inicia sesión en tu cuenta.</Heading>
         <div className="lg:w-[400px]">
-          <FinalForm onSubmit={handleSubmitForm} render={({ handleSubmit, submitting, form }) => (
+          <FinalForm onSubmit={handleSubmitForm} validate={validate} render={({ handleSubmit, submitting, form }) => (
             <form onSubmit={handleSubmit} className="p-5 rounded-lg flex flex-col gap-4">
               <Flex direction="column" gap={8}>
                 <Field name="email" component={TextInput} type="text" size="medium" placeholder="nombre@empresa.com" />

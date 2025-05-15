@@ -1,17 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-/*import '../dist/styles.css';*/
-/*import '../src/assets/styles/index.css'*/
 import '../src/index.css'
 
 import "@vibe/core/tokens";
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
+import { ToastProvider } from './components/common/toast/ToastManager';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <ToastProvider>
+        <App />
+      </ToastProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

@@ -2,17 +2,22 @@ import { IBoard } from '../models/board';
 import { ICompany } from '../models/company';
 import { ISession, ISessionFormValues } from '../models/auth/session'; 
 import axios, { AxiosResponse } from 'axios';
-
+import { history } from '../App';
+import { toast } from '../components/common/toast/Toast'; 
 
 axios.defaults.baseURL = 'https://localhost:5001/api';
 
 axios.interceptors.response.use(undefined, (error) => {
+  
   if (error.message === 'Network Error' && !error.response) {
-    alert('A network error has occurred!');
+    toast.push('Error de comunicacion al api', 'warning');
   }
-  const status = error.response
+
+  const status = error.response.status;
+
   if (status === 404) history.push('/not-found');
-  if (status === 500) toast.push('/server-error');
+  if (status === 500) toast.push('500 Error del servidor', 'negative');
+  if (status === 400) toast.push('400 Solicitud Incorrecta', 'negative');
   throw error.response;
 })
 
