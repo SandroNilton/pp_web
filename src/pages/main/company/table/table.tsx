@@ -4,39 +4,10 @@ import { IArea } from "../../../../models/area";
 import React from 'react';
 const TableView = () => {
 
-  const { companies, headquartersCompany, areasHeadquarter, loading, loadHeadquarters, loadAreas } = useDataLoader();
+ /* const { companies, headquartersCompany, areasHeadquarter, loading, loadHeadquarters, loadAreas } = useDataLoader();*/
 
-  const HeadquarterColumns = [
-    {
-      Header: 'Nombre',
-      accessorKey: 'name',
-    },
-  ];
-
-  const AreaColumns = [
-    {
-      Header: 'Nombre',
-      accessorKey: 'name',
-    },
-  ];
-
-  // Preparar las filas para la tabla
-  const data = companies.map(company => ({
-    ...company,
-    subRows: headquartersCompany[company.id]?.map(headquarter => ({
-      ...headquarter,
-      subRows: areasHeadquarter[headquarter.id] || [],
-    })) || [],
-  }));
-
-  // Inicializar las filas expandidas
-  const initialExpandedState = data.reduce((acc: Record<string, boolean>, company) => {
-    acc[company.id] = true; // Expande todas las empresas por defecto
-    company.subRows.forEach(headquarter => {
-      acc[headquarter.id] = true; // Expande todas las sedes por defecto
-    });
-    return acc;
-  }, {});
+ const loading = false;
+ const companies = [];
 
 /*
   const {
@@ -79,8 +50,6 @@ const TableView = () => {
     </div>
   );*/
 
-
-  console.log(data)
 
   if (loading) {
     return (
@@ -164,6 +133,3 @@ const TableView = () => {
 
 export default TableView
 
-function useTable(arg0: { columns: { Header: string; accessor: string; }[]; data: { subRows: { subRows: IArea[]; id: string; name: string; group: string; companyId: string; }[]; id: string; name: string; group: string; }[]; }, useExpanded: any): { getTableProps: any; getTableBodyProps: any; headerGroups: any; rows: any; prepareRow: any; } {
-  throw new Error("Function not implemented.");
-}

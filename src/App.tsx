@@ -10,7 +10,7 @@ import PublicRoute from './components/routes/PublicRoute';
 
 export const history = createBrowserHistory();
 
-const App: React.FC = () => {
+const App: React.FC = () => { 
 
   const rootStore = useContext(RootStoreContext)
   const { setAppLoaded, appLoaded, token } = rootStore.commonStore

@@ -6,7 +6,7 @@ import { IArea } from '../../../../models/area';
 import React from 'react';
 
 const useDataLoader = () => {
-  const [companies, setCompanies] = useState<ICompany[]>([]);
+  /*const [companies, setCompanies] = useState<ICompany[]>([]);
   const [headquartersCompany, setHeadquartersCompany] = useState<Record<string, IHeadquarter[]>>({});
   const [areasHeadquarter, setAreasPorSede] = useState<Record<string, IArea[]>>({});
   const [loading, setLoading] = useState(false);
@@ -67,7 +67,7 @@ const useDataLoader = () => {
     loading,
     loadHeadquarters,
     loadAreas,
-  };
+  };*/
 };
 
 export default useDataLoader;

@@ -27,9 +27,9 @@ const Panel = ({ match }: RouteComponentProps<MatchParams>) => {
         </div>
         <div className="">
           <TabList key={id} onTabChange={(newTabId) => setActiveTabId(newTabId)} size="sm" className="to-inherit border-solid border-b border-[var(--layout-border-color)] overflow-y-hidden overflow-x-auto">
-            <Tab key={1} value={0} icon={Home}><Text>Tabla Principal</Text></Tab>
-            <Tab key={2} value={1} icon={Chart}><Text>Grafico</Text></Tab>
-            <Tab key={3} value={2} icon={Timeline}><Text>Gantt</Text></Tab>
+            <Tab key={"tabla"} value={0} icon={Home}><Text>Tabla Principal</Text></Tab>
+            <Tab key={"grafico"} value={1} icon={Chart}><Text>Grafico</Text></Tab>
+            <Tab key={"time"} value={2} icon={Timeline}><Text>Gantt</Text></Tab>
           </TabList>
         </div>
       </div>
