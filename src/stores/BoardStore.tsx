@@ -5,6 +5,8 @@ import agent from '../api/agent';
 
 export default class BoardStore {
   @observable boards: IBoard[] = [];
+  @observable favorites: IBoard[] = [];
+
   rootStore: RootStore;
 
   constructor(rootStore: RootStore) {
@@ -16,7 +18,18 @@ export default class BoardStore {
     try {
       var response = await agent.Boards.list();
       runInAction(() =>
-        response.forEach((board) => this.boards.push(board)), 
+        this.boards = response,
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  @action loadFavorites = async () => {
+    try {
+      var response = await agent.Boards.favorite();
+      runInAction(() =>
+        this.favorites = response
       );
     } catch (error) {
       console.error(error);

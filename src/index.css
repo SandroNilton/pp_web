@@ -12,10 +12,6 @@ html, body, #root, .app {
   width: 100%;
 }
 
-body {
-  font-family: 'Poppins', sans-serif;
-}
-
 html, body {
   height: 100%;
   width: 100%;
@@ -31,8 +27,11 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   margin: 0;
   padding: 0;
   border: 0;
-  font: inherit;
   vertical-align: baseline;
+}
+
+.labelgroup {
+  font-family: 'Figtree'; 
 }
 
 article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {

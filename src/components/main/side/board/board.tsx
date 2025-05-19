@@ -12,8 +12,12 @@ const Board = () => {
   const [ loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    loadBoards();
-    setLoading(false);
+    const fetchData = async () => {
+      setLoading(true);
+      await loadBoards();
+      setLoading(false);
+    };
+    fetchData();
   }, [loadBoards]);
 
   const displayBoards = (boards: IBoard[]) => {

@@ -21,19 +21,12 @@ const main = () => {
         <Content isSideOpen={isSideOpen}>
           <Switch>
             <Route exact path="/" component={Dashboard} />
-            <Route exact path="/company" component={PanelCompany} />
-            <Route exact path="/board/:id" component={PanelBoard} />
-            <Route component={Error404} />
+            <Route path="/company" component={PanelCompany} />
+            <Route path="/board/:id" component={PanelBoard} />
+            <Route path="*" component={Error404} />
           </Switch>
         </Content>
       </div>
-      
-
-      
-        
-          
-
-     
     </div>
   );
 };

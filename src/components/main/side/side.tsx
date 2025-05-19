@@ -1,5 +1,5 @@
-import { AlertBanner, Button, MenuDivider } from '@vibe/core';
-import { Favorite, Home, MyWeek, Work, Workspace } from "@vibe/icons";
+import { AlertBanner, Button, Icon, IconButton, MenuDivider } from '@vibe/core';
+import { Add, Favorite, Home, MyWeek, Work, Workspace } from "@vibe/icons";
 import BoardList from './board/board';
 import FavoriteList from './favorite/favorite';
 import React from 'react';
@@ -51,7 +51,7 @@ const toggleSide = () => {
           <LinkButton route={"/my_work"} label="Mi trabajo" icon={MyWeek}/>
         </div>
         <div className='flex flex-col gap-0.5 py-1 px-3 border-b border-solid border-[#d0d4e4]'>
-          <GroupButton label="Favoritos" icon={Favorite} iconColor={expandedSection === 'favorites' ? 'fill-current text-yellow-500' : ''} onClick={() => toggleSection('favorites')}/>
+          <OptionButton label="Favoritos" icon={Favorite} iconColor={expandedSection === 'favorites' ? 'fill-current text-yellow-500' : ''} onClick={() => toggleSection('favorites')}/>
           {expandedSection === 'favorites' && (
             <div className="overflow-y-auto scroll" style={{ height: availableHeight, maxHeight: availableHeight }}>
               <FavoriteList/>
@@ -59,7 +59,11 @@ const toggleSide = () => {
           )}
         </div>
         <div className='flex flex-col gap-0.5 py-1 px-3'>
-          <OptionButton label="Espacios de trabajo" icon={Workspace} onClick={() => toggleSection('workspaces')}/>
+          <GroupButton label="Espacios de trabajo" icon={Workspace} onClick={() => toggleSection('workspaces')} expandedSection={expandedSection}>
+            <Button kind='tertiary' size='xs' onClick={alert} noSidePadding className='px-1'>
+              <Icon icon={Add} iconSize={16}/>
+            </Button>
+          </GroupButton>
           {expandedSection === 'workspaces' && (
             <div className="overflow-y-auto" style={{ maxHeight: availableHeight, height: availableHeight }}>
               <BoardList/>

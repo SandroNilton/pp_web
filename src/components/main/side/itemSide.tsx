@@ -1,6 +1,7 @@
 import { Button, Icon, IconProps } from '@vibe/core';
 import { Link, useLocation } from "react-router-dom";
 import React from 'react';
+import { Add } from '@vibe/icons/.';
 
 interface ItemSideProps {
   route?: string;
@@ -34,10 +35,5 @@ const ItemSide: React.FC<ItemSideProps> = ({ route, icon, label, iconColor, onCl
     </Link>
   );
 }
-
-
- {/*<Button kind='tertiary' size='xs' onClick={alert} noSidePadding className='px-1'>
-          <Icon icon={Add} iconSize={16}/>
-        </Button>*/}
 
 export default ItemSide;

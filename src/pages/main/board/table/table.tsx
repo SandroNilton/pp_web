@@ -1,7 +1,9 @@
 import { Avatar, Button, Label, Table, TableBody, TableCell, TableHeader, TableHeaderCell, TableRow } from "@vibe/core";
+import React from "react";
 
 const TableView = () => {
-
+  return ( <div>hola</div>)
+/*
   return (
     <div>
       <div className="py-4 top-0 sticky flex justify-between h-full overflow-y-hidden overflow-x-auto">
@@ -575,7 +577,7 @@ const TableView = () => {
 
       </div>
     </div>
-  );
+  );*/
 };
 
 export default TableView

@@ -1,29 +1,40 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { BrowserRouter, Router, Route, Switch } from 'react-router-dom';
 import Auth from './components/layouts/auth';
 import Main from './components/layouts/main';
 import { createBrowserHistory } from 'history';
+import { RootStoreContext } from './stores/rootStore';
+import { observer } from 'mobx-react';
+import PrivateRoute from './components/routes/PrivateRoute';
+import PublicRoute from './components/routes/PublicRoute';
 
 export const history = createBrowserHistory();
 
 const App: React.FC = () => {
 
-  const { commonStore, sessionStore } = SessionStore();
+  const rootStore = useContext(RootStoreContext)
+  const { setAppLoaded, appLoaded, token } = rootStore.commonStore
+  const { getUser } = rootStore.sessionStore
 
   useEffect(() => {
-    if (commonStore.token) {
-      sessionStore.getUser();
+    if (token) {
+      getUser().finally(() => setAppLoaded())
     }
-  }, [commonStore.token]);
+    else{ 
+      setAppLoaded()
+    }
+    console.log(`is apploaded : ${appLoaded}`)
+  }, [getUser, setAppLoaded, token, appLoaded])
 
+  if(!appLoaded) return <p>cargando</p> /*<LoadingComponent content="Loading app..." />*/
   return (
     <Router history={history}>
       <Switch>
-        <Route path="/auth" exact component={Auth}></Route>
-        <Route path="/" exact component={Main}></Route>
+        <PublicRoute path="/auth" component={Auth}></PublicRoute>
+        <PrivateRoute path="/" component={Main}></PrivateRoute>
       </Switch>
     </Router>
   );
 };
 
-export default App;
+export default observer(App);

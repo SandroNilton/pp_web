@@ -17,7 +17,7 @@ const Panel = ({ match }: RouteComponentProps<MatchParams>) => {
 
   return (
     <div className="w-full cursor-default flex flex-col select-none px-[30px] ">
-      <div className="top-0 sticky z-10 bg-[var(--primary-background-color)] pt-[15px]">
+      <div className="top-0 sticky bg-[var(--primary-background-color)] pt-[15px]">
         <div className="justify-between z-50 flex items-center w-full pb-3 gap-8" style={{ position: 'relative', zIndex: 100 }}>
           <EditableHeading type="h2" key={id} value="Empresas casdasd asd  sda assssssssssss ssssss ssss ssdhs shsaha sah saksjdajdja ajsdajj smmdamsmdasm sadm skakdk"/>
           <div className="flex gap-1.5">

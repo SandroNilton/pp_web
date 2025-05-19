@@ -30,6 +30,22 @@ export default class SessionStore {
     }
   }
 
+  /*@action register = async (values: IUserFormValues) => {
+    try {
+      values.avatar = `http://gravatar.com/avatar/${md5(values.email)}?d=identicon`
+      var user = await agent.User.register(values)
+      
+      runInAction(() => {
+        this.user = user
+        history.push('/')
+        this.rootStore.commonStore.setToken(user.token)
+      })
+    } catch (error) {
+      console.log(error)
+      throw error
+    }
+  }*/
+
   @action logout = () => {
     this.rootStore.commonStore.setToken(null);
     this.session = null;
@@ -38,12 +54,12 @@ export default class SessionStore {
 
   @action getUser = async () => {
     try {
-      const session = await agent.Auth.current(); // debe ser un endpoint tipo /me
+      const session = await agent.Auth.current(); 
       runInAction(() => {
         this.session = session;
       });
     } catch (error) {
-      console.log("No se pudo cargar el usuario:", error);
+      throw error;
     }
   }
   

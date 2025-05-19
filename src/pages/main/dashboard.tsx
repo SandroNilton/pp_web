@@ -9,9 +9,6 @@ const Dashboard = () => {
   const rootStore = useContext(RootStoreContext);
   const { session, logout, isLoggedIn } = rootStore.sessionStore;
 
-  console.log(session!.userName, 'session')
-  console.log(rootStore)
-
   return (
     <div className="w-full h-full">
       <div className="flex flex-wrap gap-3 justify-between p-5 w-full items-center" style={{boxShadow: '0px 3px 12px #e6e9ef'}}>

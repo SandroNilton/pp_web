@@ -41,7 +41,7 @@ export const ToastMesssage = () => {
   }, []);
 
   return (
-    <Toast open={open} type={type} loading={loading} autoHideDuration={duration} onClose={() => setOpen(false)} >
+    <Toast className="z-10" open={open} type={type} loading={loading} autoHideDuration={duration} onClose={() => setOpen(false)} >
       {message}
     </Toast>
   );

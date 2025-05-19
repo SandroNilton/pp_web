@@ -6,7 +6,7 @@ import React from 'react';
 const Header = () => {
 
   return (
-    <nav className='fixed top-0 w-full bg-[#eceff8] z-10'>
+    <nav className='fixed top-0 w-full bg-[#eceff8]'>
       <div className='flex items-center justify-between h-12 px-2'>
         <div className='flex gap-1 items-center content-center justify-start rtl:justify-end'>
           <Tooltip content="Inicio" position="bottom" className="flex items-center gap-1">
