@@ -1,55 +1,38 @@
-import React, { ReactNode, useContext, Children, isValidElement, cloneElement } from "react";
-import { TabsContext } from "./TabsContext";
+import React from "react"
+import { TabProvider, useTabs } from "./TabsContext"
 
-interface TabProps {
-  children: ReactNode;
-  index?: number;
-  isActive?: boolean;
-  enabled?: boolean;
-  onActivate?: () => void;
+interface TabsProps {
+  children: React.ReactNode;
+  defaultIndex: number;
 }
 
-export const TabList = ({ children }: { children: ReactNode }) => {
-  const context = useContext(TabsContext);
-  if (!context) throw new Error("TabList must be inside TabsProvider");
-  const { activeIndex, setActiveIndex } = context;
-
-  return (
-    <div style={{ display: "flex", gap: 8, borderBottom: "1px solid #ccc" }}>
-      {Children.map(children, (child, index) => {
-        if (!isValidElement<TabProps>(child)) return null;
-        return cloneElement<TabProps>(child, {
-          index,
-          isActive: activeIndex === index,
-          onActivate: () => setActiveIndex(index),
-        });
-      })}
-    </div>
-  );
-};
-
-export const Tab = ({
-  children,
-  enabled = true,
-  isActive = false,
-  onActivate,
-}: TabProps) => {
-  return (
-    <button
-      onClick={() => enabled && onActivate?.()}
-      disabled={!enabled}
-      style={{
-        fontWeight: isActive ? "bold" : "normal",
-        padding: "8px 16px",
-        cursor: enabled ? "pointer" : "not-allowed",
-        borderBottom: isActive ? "2px solid blue" : "2px solid transparent",
-        background: "none",
-        border: "none",
-        color: enabled ? "black" : "gray",
-        opacity: enabled ? 1 : 0.5,
-      }}
-    >
+export const Tabs: React.FC<TabsProps> = ({ children, defaultIndex }) => {
+  return <TabProvider defaultIndex={defaultIndex}>
+    <div className="">
       {children}
-    </button>
-  );
-};
+    </div>
+  </TabProvider>
+}
+
+export const TabList: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  return <div className="tab-list flex overflow-x-auto overflow-y-hidden w-full flex-row list-none p-0 outline-none h-8">
+    {children}
+  </div>
+}
+
+export const Tab: React.FC<{ index: number; children: React.ReactNode }> = ({ index, children }) => {
+  const { activeTab, setActiveTab } = useTabs();
+
+  return <div className={`tab-item ${activeTab === index ? 'active border-b-[var(--primary-color)] ' : ''} px-[1px]  border-solid h-full border-t-[1px] border-t-transparent border-b-[var(--ui-background-color)] border-b-2 text-center hover:bg-[var(--primary-background-hover-color)] hover:cursor-pointer rounded-t-[4px]`} onClick={() => setActiveTab(index)}>
+    <div className="px-4 py-0.5 mb-[1px] labelgroup text-base text-[var(--primary-text-color)] justify-center items-center" style={{ height: 'calc(100% - 1px)' }}>
+      {children}
+    </div>
+  </div>
+}
+
+export const TabPanel: React.FC<{ index: number; children: React.ReactNode }> = ({ index, children }) => {
+  const { activeTab } = useTabs();
+
+  return activeTab === index ? <div className="tab-panel h-full w-full">{children}</div> : null
+  
+}

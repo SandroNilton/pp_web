@@ -1,28 +1,27 @@
-import React, { createContext, ReactNode, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
+import { ReactNode } from "react";
 
 interface TabsContextType {
-  activeIndex: number;
-  setActiveIndex: (index: number) => void;
+  activeTab: number;
+  setActiveTab: (id: number) => void;
 }
 
-export const TabsContext = createContext<TabsContextType | undefined>(undefined);
+const TabsContext = createContext<TabsContextType | undefined>(undefined);
 
-interface TabsProviderProps {
-  children: ReactNode;
-  onTabChange?: (index: number) => void;
-}
-
-export const TabsProvider = ({ children, onTabChange }: TabsProviderProps) => {
-  const [activeIndex, setActiveIndexState] = useState(0);
-
-  const setActiveIndex = (index: number) => {
-    setActiveIndexState(index);
-    if (onTabChange) onTabChange(index);
-  };
+export const TabProvider = ({ children, defaultIndex = 0 }: { children: ReactNode; defaultIndex?: number }) => {
+  const [activeTab, setActiveTab] = useState(defaultIndex);
 
   return (
-    <TabsContext.Provider value={{ activeIndex, setActiveIndex }}>
+    <TabsContext.Provider value={{ activeTab, setActiveTab }}>
       {children}
     </TabsContext.Provider>
-  );
+  )
 };
+
+export const useTabs = () => {
+  const context = useContext(TabsContext);
+  if (!context) {
+    throw new Error("useTab must be used within a TabProvider");
+  }
+  return context;
+}

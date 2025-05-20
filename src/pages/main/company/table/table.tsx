@@ -72,9 +72,92 @@ const TableView = () => {
   return (
     <div className='flex flex-1 opacity-100 transition-opacity py-1 items-center h-full justify-center'>
       <div className='flex flex-col gap-1 grow'>
+
+
         <div className='flex flex-col gap-y-1 items-center'>
           <Text align='center' type='text2' className='whitespace-normal'>Este espacio de trabajo está vacío.</Text>
           <Text align='center' type='text2'  className='whitespace-normal'>Agrega tableros, docs, formularios o paneles para empezar ahora.</Text>
+          
+        </div> 
+        <div className='flex flex-col gap-y-1 items-center'>
+          <Text align='center' type='text2' className='whitespace-normal'>Este espacio de trabajo está vacío.</Text>
+          <Text align='center' type='text2'  className='whitespace-normal'>Agrega tableros, docs, formularios o paneles para empezar ahora.</Text>
+          
+        </div> 
+        <div className='flex flex-col gap-y-1 items-center'>
+          <Text align='center' type='text2' className='whitespace-normal'>Este espacio de trabajo está vacío.</Text>
+          <Text align='center' type='text2'  className='whitespace-normal'>Agrega tableros, docs, formularios o paneles para empezar ahora.</Text>
+          
+        </div> 
+        <div className='flex flex-col gap-y-1 items-center'>
+          <Text align='center' type='text2' className='whitespace-normal'>Este espacio de trabajo está vacío.</Text>
+          <Text align='center' type='text2'  className='whitespace-normal'>Agrega tableros, docs, formularios o paneles para empezar ahora.</Text>
+          
+        </div> 
+        <div className='flex flex-col gap-y-1 items-center'>
+          <Text align='center' type='text2' className='whitespace-normal'>Este espacio de trabajo está vacío.</Text>
+          <Text align='center' type='text2'  className='whitespace-normal'>Agrega tableros, docs, formularios o paneles para empezar ahora.</Text>
+          
+        </div> 
+        <div className='flex flex-col gap-y-1 items-center'>
+          <Text align='center' type='text2' className='whitespace-normal'>Este espacio de trabajo está vacío.</Text>
+          <Text align='center' type='text2'  className='whitespace-normal'>Agrega tableros, docs, formularios o paneles para empezar ahora.</Text>
+          
+        </div> 
+        <div className='flex flex-col gap-y-1 items-center'>
+          <Text align='center' type='text2' className='whitespace-normal'>Este espacio de trabajo está vacío.</Text>
+          <Text align='center' type='text2'  className='whitespace-normal'>Agrega tableros, docs, formularios o paneles para empezar ahora.</Text>
+          
+        </div> 
+        <div className='flex flex-col gap-y-1 items-center'>
+          <Text align='center' type='text2' className='whitespace-normal'>Este espacio de trabajo está vacío.</Text>
+          <Text align='center' type='text2'  className='whitespace-normal'>Agrega tableros, docs, formularios o paneles para empezar ahora.</Text>
+          
+        </div> 
+        <div className='flex flex-col gap-y-1 items-center'>
+          <Text align='center' type='text2' className='whitespace-normal'>Este espacio de trabajo está vacío.</Text>
+          <Text align='center' type='text2'  className='whitespace-normal'>Agrega tableros, docs, formularios o paneles para empezar ahora.</Text>
+          
+        </div> 
+        <div className='flex flex-col gap-y-1 items-center'>
+          <Text align='center' type='text2' className='whitespace-normal'>Este espacio de trabajo está vacío.</Text>
+          <Text align='center' type='text2'  className='whitespace-normal'>Agrega tableros, docs, formularios o paneles para empezar ahora.</Text>
+          
+        </div> 
+        <div className='flex flex-col gap-y-1 items-center'>
+          <Text align='center' type='text2' className='whitespace-normal'>Este espacio de trabajo está vacío.</Text>
+          <Text align='center' type='text2'  className='whitespace-normal'>Agrega tableros, docs, formularios o paneles para empezar ahora.</Text>
+          
+        </div> 
+        <div className='flex flex-col gap-y-1 items-center'>
+          <Text align='center' type='text2' className='whitespace-normal'>Este espacio de trabajo está vacío.</Text>
+          <Text align='center' type='text2'  className='whitespace-normal'>Agrega tableros, docs, formularios o paneles para empezar ahora.</Text>
+          
+        </div> 
+        <div className='flex flex-col gap-y-1 items-center'>
+          <Text align='center' type='text2' className='whitespace-normal'>Este espacio de trabajo está vacío.</Text>
+          <Text align='center' type='text2'  className='whitespace-normal'>Agrega tableros, docs, formularios o paneles para empezar ahora.</Text>
+          
+        </div> 
+        <div className='flex flex-col gap-y-1 items-center'>
+          <Text align='center' type='text2' className='whitespace-normal'>Este espacio de trabajo está vacío.</Text>
+          <Text align='center' type='text2'  className='whitespace-normal'>Agrega tableros, docs, formularios o paneles para empezar ahora.</Text>
+          
+        </div> 
+        <div className='flex flex-col gap-y-1 items-center'>
+          <Text align='center' type='text2' className='whitespace-normal'>Este espacio de trabajo está vacío.</Text>
+          <Text align='center' type='text2'  className='whitespace-normal'>Agrega tableros, docs, formularios o paneles para empezar ahora.</Text>
+          
+        </div> 
+        <div className='flex flex-col gap-y-1 items-center'>
+          <Text align='center' type='text2' className='whitespace-normal'>Este espacio de trabajo está vacío.</Text>
+          <Text align='center' type='text2'  className='whitespace-normal'>Agrega tableros, docs, formularios o paneles para empezar ahora.</Text>
+          
+        </div> 
+        <div className='flex flex-col gap-y-1 items-center'>
+          <Text align='center' type='text2' className='whitespace-normal'>Este espacio de trabajo está vacío.</Text>
+          <Text align='center' type='text2'  className='whitespace-normal'>Agrega tableros, docs, formularios o paneles para empezar ahora.</Text>
+          
         </div> 
       </div>
     </div>
