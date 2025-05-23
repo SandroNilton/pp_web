@@ -16,7 +16,7 @@ const auth = () => {
   const backgroundImage = backgroundImages[location.pathname as keyof typeof backgroundImages] || backgroundImages["/auth"];
 
   return (
-    <div className="flex flex-col w-full h-screen">
+    <div className="flex flex-col w-full h-screen bg-white">
       <div className="h-full">
         <div className="grid lg:grid-cols-12 h-full">
           <div className="col-span-7 flex justify-center items-center">

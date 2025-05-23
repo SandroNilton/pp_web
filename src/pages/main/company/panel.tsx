@@ -25,20 +25,19 @@ import CalendarView from "./calendar/calendar";
     return (
       <div className="w-full cursor-default flex flex-col select-none">
         <Tabs defaultIndex={0}>
-          <div className="top-0 sticky bg-[var(--primary-background-color)]  z-10">
+          <div className="top-0 sticky bg-[var(--primary-background-color)]">
             <div className="bg-[var(--primary-background-color)] px-8 pt-4 border-b-[1px] border-solid border-[var(--layout-border-color)]">
-              <div className="justify-between flex items-center pb-3 gap-8">
+              <div className="justify-between flex items-center pb-3 gap-1.5">
                 <Heading className="flex gap-3 items-center ">
                   Empresas
                   <div>
-                    <Tooltip content="Mira todas las empresas">
+                    <Tooltip content="Mira todas las empresas"> 
                       <Icon iconSize={20} icon={Info} className="mt-1"/>
                     </Tooltip>
                   </div>
                 </Heading>
                 <div className="flex gap-1.5">
                   <IconButton size="small" icon={Comment}></IconButton>
-                  <IconButton size="small" icon={Settings}></IconButton>
                 </div>
               </div>
               <TabList>

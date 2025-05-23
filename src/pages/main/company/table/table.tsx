@@ -1,7 +1,6 @@
-import { Button, Loader, Table, TableBody, TableCell, TableHeader, TableHeaderCell, TableRow, Text } from "@vibe/core";
-import useDataLoader from "../data/dataLoad";
-import { IArea } from "../../../../models/area";
+import { Loader, Text } from "@vibe/core";
 import React from 'react';
+
 const TableView = () => {
 
  /* const { companies, headquartersCompany, areasHeadquarter, loading, loadHeadquarters, loadAreas } = useDataLoader();*/
@@ -72,7 +71,6 @@ const TableView = () => {
   return (
     <div className='flex flex-1 opacity-100 transition-opacity py-1 items-center h-full justify-center'>
       <div className='flex flex-col gap-1 grow'>
-
 
         <div className='flex flex-col gap-y-1 items-center'>
           <Text align='center' type='text2' className='whitespace-normal'>Este espacio de trabajo está vacío.</Text>

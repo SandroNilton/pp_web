@@ -14,7 +14,7 @@ const main = () => {
   const [isSideOpen, setIsSideOpen] = useState(false);
 
   return (
-    <div className="h-screen overflow-hidden bg-[#eceff8]">
+    <div className="h-screen overflow-hidden">
       <Header />
       <div className="h-[calc(100%-3rem)]">
         <Side />

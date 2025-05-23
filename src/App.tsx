@@ -7,6 +7,7 @@ import { RootStoreContext } from './stores/rootStore';
 import { observer } from 'mobx-react';
 import PrivateRoute from './components/routes/PrivateRoute';
 import PublicRoute from './components/routes/PublicRoute';
+import LoaderPage from './components/common/loading/Loader';
 
 export const history = createBrowserHistory();
 
@@ -26,7 +27,8 @@ const App: React.FC = () => {
     console.log(`is apploaded : ${appLoaded}`)
   }, [getUser, setAppLoaded, token, appLoaded])
 
-  if(!appLoaded) return <p>cargando</p> /*<LoadingComponent content="Loading app..." />*/
+  if(!appLoaded) return <LoaderPage/>
+
   return (
     <Router history={history}>
       <Switch>

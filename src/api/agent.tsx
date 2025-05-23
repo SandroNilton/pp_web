@@ -61,6 +61,7 @@ const Boards = {
 
 const Companies = {
   list: (): Promise<ICompany[]> => request.get('/company'),
+  global: (): Promise<ICompany[]> => request.get('/company/global'),
   details: (id: string) => request.get(`/company/${id}`),
   create: (company: ICompany) => request.post('/company', company),
   update: (company: ICompany) => request.put(`/company/${company.id}`, company),
