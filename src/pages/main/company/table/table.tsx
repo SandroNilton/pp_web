@@ -1,12 +1,52 @@
 import { Loader, Text } from "@vibe/core";
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { RootStoreContext } from '../../../../stores/rootStore';
 
 const TableView = () => {
 
+  const rootStore = useContext(RootStoreContext);
+  const { global, loadGlobal } = rootStore.companyStore;
+  const [ loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      await loadGlobal();
+      setLoading(false);
+    };
+    fetchData();
+  }, [loadGlobal]);
+
+  if (loading) {
+    return (
+      <div className="flex flex-1 items-center justify-center h-full">
+        <Loader hasBackground size="small" color="primary" />
+      </div>
+    );
+  }
+
+  if (global.length != 0) {
+    return (
+      <div className='flex flex-1 opacity-100 transition-opacity py-1 h-full'>
+        <div className='flex flex-col gap-1 grow w-full'>
+          casa
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className='flex flex-1 opacity-100 transition-opacity py-1 h-full'>
+      <div className='flex flex-col gap-1 grow w-full'>
+        <Text align='center' type='text2' className='whitespace-normal'>Este espacio de trabajo está vacío.</Text>
+        <Text align='center' type='text2'  className='whitespace-normal'>Agrega tableros, docs, formularios o paneles para empezar ahora.</Text>
+      </div>
+    </div>
+  )
+
  /* const { companies, headquartersCompany, areasHeadquarter, loading, loadHeadquarters, loadAreas } = useDataLoader();*/
 
- const loading = false;
- const companies = [];
+ /*const companies = [];
 
 /*
   const {
@@ -50,7 +90,7 @@ const TableView = () => {
   );*/
 
 
-  if (loading) {
+  /*if (loading) {
     return (
       <div className="flex flex-1 items-center justify-center h-full">
         <Loader hasBackground size="small" color="primary" />
@@ -62,7 +102,8 @@ const TableView = () => {
     return (
       <div className='flex flex-1 opacity-100 transition-opacity py-1 h-full'>
         <div className='flex flex-col gap-1 grow w-full'>
-          
+          <Text align='center' type='text2' className='whitespace-normal'>Este espacio de trabajo está vacío.</Text>
+          <Text align='center' type='text2'  className='whitespace-normal'>Agrega tableros, docs, formularios o paneles para empezar ahora.</Text>
         </div>
       </div>
     )
@@ -78,8 +119,7 @@ const TableView = () => {
           
         </div> 
         <div className='flex flex-col gap-y-1 items-center'>
-          <Text align='center' type='text2' className='whitespace-normal'>Este espacio de trabajo está vacío.</Text>
-          <Text align='center' type='text2'  className='whitespace-normal'>Agrega tableros, docs, formularios o paneles para empezar ahora.</Text>
+          
           
         </div> 
         <div className='flex flex-col gap-y-1 items-center'>
@@ -158,11 +198,8 @@ const TableView = () => {
           
         </div> 
       </div>
-    </div>
-  );
-
-
-
+    </div>*/
+ 
 
 
 
