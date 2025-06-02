@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { ICompany } from '../../../../models/company';
 import { HeadquartersTable } from "./headquartersTable";
 //import { HeadquartersTable } from "./HeadquartersTable";
+import { EditableHeading, EditableText, IconButton } from '@vibe/core';
+import { DropdownChevronDown, DropdownChevronRight, Menu } from "@vibe/icons";
 
 interface Props {
   company: ICompany;
@@ -9,17 +11,15 @@ interface Props {
 
 export const CompanySection: React.FC<Props> = ({ company }) => {
 
-  { console.log(company) }
-
   const [isOpen, setIsOpen] = useState(true);
   return (
-    <div style={{ marginBottom: 16, border: "1px solid #ccc", borderRadius: 8 }}>
-      <div
-        onClick={() => setIsOpen(!isOpen) }
-        style={{ cursor: "pointer", padding: 12, background: "#eee", fontWeight: "bold" }}
-      >
-        {isOpen ? "▼s" : "▶"} {company.name}
+    <div>
+      <div className="flex gap-2 items-center">
+        <IconButton size="xs" icon={Menu}></IconButton>
+        <IconButton size="small" icon={ isOpen ? DropdownChevronDown : DropdownChevronRight } onClick={ () => setIsOpen(!isOpen) } tooltipContent="Contraer grupos"></IconButton>
+        <EditableHeading type="h3" weight="medium" value={company.name}></EditableHeading>
       </div>
+      
 
       {isOpen && (
         <div>
