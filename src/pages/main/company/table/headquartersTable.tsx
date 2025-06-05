@@ -8,14 +8,21 @@ interface Props {
 
 export const HeadquartersTable: React.FC<Props> = ({ headquarter }) => {
 
-  console.log("esto:" + headquarter[0].areas[0]);
 const [expanded, setExpanded] = useState<ExpandedState>({});
   const columns: ColumnDef<IHeadquarter>[] = [
     {
-      header: "Dirección",
+      header: "Sede",
       accessorKey: "address",
     },
     {
+      header: "Código",
+      accessorKey: "code",
+    },
+    {
+      header: "Presenta actividades PAHS",
+      accessorKey: "pahs",
+    },
+    /*{
       header: "Áreas",
       id: "areas",
       cell: ({ row }) => (
@@ -23,7 +30,7 @@ const [expanded, setExpanded] = useState<ExpandedState>({});
           {row.getIsExpanded() ? "Ocultar" : "Ver Áreas"}
         </button>
       ),
-    },
+    },*/
   ];
 
   const table = useReactTable({
@@ -36,13 +43,13 @@ const [expanded, setExpanded] = useState<ExpandedState>({});
   });
 
   return (
-    <div>
-      <table cellPadding={5} style={{ width: "100%", background: "#fff" }}>
+    <div style={{ paddingLeft: "2rem" }}>
+      <table style={{ width: "100%", borderCollapse: "collapse", marginTop: 10 }}>
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
-            <tr key={headerGroup.id}>
+            <tr key={headerGroup.id} style={{ backgroundColor: "#f1f1f1" }}>
               {headerGroup.headers.map((header) => (
-                <th key={header.id}>
+                <th key={header.id} style={{ minHeight: "36px", border: "1px solid #ccc", padding: "8px", textAlign: "left", }}>
                   {flexRender(header.column.columnDef.header, header.getContext())}
                 </th>
               ))}
