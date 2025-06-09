@@ -23,7 +23,7 @@ export const CompanySection: React.FC<Props> = ({ company }) => {
             <IconButton size="small" icon={ isOpen ? DropdownChevronDown : DropdownChevronRight } onClick={ () => setIsOpen(!isOpen) } tooltipContent="Contraer grupos"></IconButton>
             <EditableHeading type="h3" weight="medium" value={company.name}></EditableHeading>
             <div className="flex items-center">
-              <Text className="text-[var(--secondary-text-color)]">{ company.headquarters?.length && company.headquarters.length > 0 ? company.headquarters.length : 'No' } Sedes</Text>
+              <Text className="text-[--secondary-text-color]">{ company.headquarters?.length && company.headquarters.length > 0 ? company.headquarters.length : 'No' } Sedes</Text>
             </div>
           </div>
         </div>

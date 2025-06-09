@@ -52,15 +52,16 @@
               </div>
             </div> 
           </div>
-          <TabPanel index={0}>
-            <TableView/>
-          </TabPanel>
-          <TabPanel index={1}>
-            <ChartView/>
-          </TabPanel>
-          <TabPanel index={2}>
-            <CalendarView/>
-          </TabPanel>
+            <TabPanel index={0}>
+              <TableView/>
+            </TabPanel>
+            <TabPanel index={1}>
+              <ChartView/>
+            </TabPanel>
+            <TabPanel index={2}>
+              <CalendarView/>
+            </TabPanel>
+          
         </Tabs>
       </div>
     );
