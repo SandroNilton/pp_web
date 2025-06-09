@@ -19,7 +19,15 @@ axios.interceptors.response.use(undefined, (error) => {
 
   if (status === 404) history.push('/not-found');
   if (status === 500) toast.push('500 Error del servidor', 'negative');
-  if (status === 401) toast.push('400 Solicitud Incorrecta', 'negative');
+  if (status === 403) {
+    toast.push('No tiene permisos para realizar esta acción', 'warning');
+    history.push('/unauthorized');
+  }
+  if (status === 401) {
+    toast.push('Sesión expirada. Por favor, inicie sesión nuevamente.', 'warning');
+    localStorage.removeItem('jwt');
+    history.push('/auth');
+  }
 
   throw error.response;
 });

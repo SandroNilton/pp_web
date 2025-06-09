@@ -6,7 +6,7 @@ import { ICompany } from "../../../../models/company";
 import { Menu } from "@vibe/icons";
 import { IHeadquarter } from "../../../../models/headquarter";
 import { IArea } from "../../../../models/area";
-import { CompanySection } from "./CompanySection";
+import { CompanySection } from "./companySection";
 
 const TableView = () => {
 
