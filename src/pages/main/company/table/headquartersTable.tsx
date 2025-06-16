@@ -17,7 +17,7 @@ const [expanded, setExpanded] = useState<ExpandedState>({});
       accessorKey: "address",
       cell: ({ row }) => (
         <div className="flex w-full gap-3 items-center align-middle px-1">
-          <IconButton size="xs" icon={ row.getIsExpanded() ? DropdownChevronDown : DropdownChevronRight } onClick={() => row.toggleExpanded()} tooltipContent="Expandir este elemento"></IconButton>
+          <IconButton className="" size="xs" icon={ row.getIsExpanded() ? DropdownChevronDown : DropdownChevronRight } onClick={() => row.toggleExpanded()} tooltipContent="Expandir este elemento"></IconButton>
           <div className="gap-2 max-w-52 min-w-52">
             <EditableText type="text1" className="m-0" value={ row.original.address }></EditableText>
           </div>

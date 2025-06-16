@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ICompany } from '../../../../models/company';
 import { HeadquartersTable } from "./headquartersTable";
 //import { HeadquartersTable } from "./HeadquartersTable";
-import { EditableHeading, EditableText, IconButton, Text } from '@vibe/core';
+import { Avatar, EditableHeading, EditableText, IconButton, Text } from '@vibe/core';
 import { DropdownChevronDown, DropdownChevronRight, Menu } from "@vibe/icons";
 
 interface Props {
@@ -20,7 +20,7 @@ export const CompanySection: React.FC<Props> = ({ company }) => {
         </div>
         <div className="flex-grow-[5]">
           <div className="h-10 flex items-center ml-1.5 gap-2">
-            <IconButton size="small" icon={ isOpen ? DropdownChevronDown : DropdownChevronRight } onClick={ () => setIsOpen(!isOpen) } tooltipContent="Contraer grupos"></IconButton>
+            <IconButton  size="small" icon={ isOpen ? DropdownChevronDown : DropdownChevronRight } onClick={ () => setIsOpen(!isOpen) } tooltipContent="Contraer grupos"></IconButton>
             <EditableHeading type="h3" weight="medium" value={company.name}></EditableHeading>
             <div className="flex items-center">
               <Text className="text-[--secondary-text-color]">{ company.headquarters?.length && company.headquarters.length > 0 ? company.headquarters.length : 'No' } Sedes</Text>

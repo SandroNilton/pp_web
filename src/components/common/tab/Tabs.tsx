@@ -21,9 +21,9 @@ export const TabList: React.FC<{ children: React.ReactNode }> = ({ children }) =
 }
 
 export const Tab: React.FC<{ index: number; children: React.ReactNode }> = ({ index, children }) => {
-  const { activeTab, setActiveTab } = useTabs();
+  const { activeTab, setActiveTab } = useTabs(); /*[var(--ui-background-color)]*/
 
-  return <div className={`tab-item ${activeTab === index ? 'active border-b-[#0073ea]' : 'border-b-[var(--ui-background-color)]'} px-[1px]  border-solid h-full border-t-[1px] border-t-transparent border-b-2 text-center hover:bg-[var(--primary-background-hover-color)] hover:cursor-pointer rounded-t-[4px]`} onClick={() => setActiveTab(index)}>
+  return <div className={`tab-item ${activeTab === index ? 'active border-b-[#0073ea]' : 'border-b-transparent'} px-[1px]  border-solid h-full border-t-[1px] border-t-transparent border-b-2 text-center hover:bg-[var(--primary-background-hover-color)] hover:cursor-pointer rounded-t-[4px]`} onClick={() => setActiveTab(index)}>
     <div className="px-4 py-0.5 mb-[1px] labelgroup text-base text-[var(--primary-text-color)] justify-center items-center" style={{ height: 'calc(100% - 1px)' }}>
       {children}
     </div>

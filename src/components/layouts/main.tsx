@@ -16,7 +16,7 @@ const main = () => {
   return (
     <div className="h-screen overflow-hidden">
       <Header />
-      <div className="h-[calc(100%-3rem)]">
+      <div className="bg-[#eceff8]">
         <Side />
         <Content isSideOpen={isSideOpen}>
           <Switch>

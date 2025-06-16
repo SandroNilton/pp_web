@@ -1,4 +1,4 @@
-  import { Button, Heading, Icon, IconButton, Search, Tooltip } from "@vibe/core";
+  import { AlertBanner, Button, Heading, Icon, IconButton, Search, Tooltip } from "@vibe/core";
   import React, { useState } from "react";
   import ModalC from "./modal/modal";
   import { ICompany } from "../../../models/company";
@@ -18,31 +18,48 @@
       console.log(company)
     }
 
-    
-
     return (
-      <div className="w-full cursor-default flex flex-col select-none">
+      <div className="h-full bg-white w-full rounded-t-lg outline-none text-[#323338]">
         <Tabs defaultIndex={0}>
-          <div className="top-0 sticky bg-[var(--primary-background-color)]">
-            <div className="bg-[var(--primary-background-color)] px-8 pt-4 border-b-[1px] border-solid border-[var(--layout-border-color)]">
-              <div className="justify-between flex items-center pb-3 gap-1.5">
-                <Heading className="flex gap-3 items-center ">
-                  Empresas
-                  <div>
-                    <Tooltip content="Mira todas las empresas"> 
-                      <Icon iconSize={20} icon={Info} className="mt-1"/>
-                    </Tooltip>
+          <div className="scroll-pt-[250px] contain-layout relative cursor-default flex-col h-full flex select-none overflow-auto overflow-y-scroll">
+            {/*<div className="left-0">
+              <div id="board-header-banner" className="flex sticky items-center mr-0">
+                <AlertBanner ariaLabel="hola" className="rounded-t-lg " closeButtonAriaLabel="x"></AlertBanner>
+              </div>
+            </div>*/}
+            <div className="mr-0 top-0 left-0 sticky z-[3000]">
+              <div className="relative">
+                <div className="">
+                  <div className="px-[30px] pt-[18px] pb-0">
+                    <div className="relative border-b-[1px] border-solid border-b-[var(--ui-border-color)]">
+                      <div className="w-full gap-x-[16px] ">
+                        <div className="justify-between flex items-center pb-3 gap-1.5">
+                          <Heading className="flex gap-3 items-center ">
+                            Empresas
+                            <div>
+                              <Tooltip content="Mira todas las empresas"> 
+                                <Icon iconSize={20} icon={Info} className="mt-1"/>
+                              </Tooltip>
+                            </div>
+                          </Heading>
+                          <div className="flex gap-1.5">
+                            <IconButton size="small" icon={Comment}></IconButton>
+                          </div>
+                        </div>
+                        <TabList>
+                          <Tab index={0}>Tabla</Tab>
+                          <Tab index={1}>Grafico</Tab>
+                          <Tab index={2}>Calendario</Tab>
+                        </TabList>
+                      </div>
+                    </div>
                   </div>
-                </Heading>
-                <div className="flex gap-1.5">
-                  <IconButton size="small" icon={Comment}></IconButton>
                 </div>
               </div>
-              <TabList>
-                <Tab index={0}>Tabla</Tab>
-                <Tab index={1}>Grafico</Tab>
-                <Tab index={2}>Calendario</Tab>
-              </TabList>
+
+
+              
+             
             </div>
             <div className="px-8 py-2 flex overflow-x-auto justify-between gap-3">
               <div className="flex gap-3">
@@ -51,16 +68,28 @@
                 <Search size="small" placeholder="Buscar"/>
               </div>
             </div> 
+
+            <div className="grow">
+            <div className="mr-0 mt-0 box-content pb-10 pl-10">
+              <div className=" h-full w-full">
+                <div className=" w-full h-full ">
+ <TabPanel index={0}>
+                <TableView/>
+              </TabPanel>
+              <TabPanel index={1}>
+                <ChartView/>
+              </TabPanel>
+              <TabPanel index={2}>
+                <CalendarView/>
+              </TabPanel>
+                </div>
+ 
+              </div>
+            
+            </div>
+          
           </div>
-            <TabPanel index={0}>
-              <TableView/>
-            </TabPanel>
-            <TabPanel index={1}>
-              <ChartView/>
-            </TabPanel>
-            <TabPanel index={2}>
-              <CalendarView/>
-            </TabPanel>
+          </div>
           
         </Tabs>
       </div>
