@@ -15,7 +15,7 @@ axios.interceptors.response.use(undefined, (error) => {
     return;
   }
 
-  const { status } = error.response.status;
+  const status  = error.response.status;
 
   if (status === 404) history.push('/not-found');
   if (status === 500) toast.push('500 Error del servidor', 'negative');
@@ -24,11 +24,10 @@ axios.interceptors.response.use(undefined, (error) => {
     history.push('/unauthorized');
   }
   if (status === 401) {
-    toast.push('Sesión expirada. Por favor, inicie sesión nuevamente.', 'warning');
+    toast.push('Datos incorrectos.', 'warning');
     localStorage.removeItem('jwt');
     history.push('/auth');
   }
-
   throw error.response;
 });
 

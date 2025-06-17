@@ -31,7 +31,7 @@
               <div className="relative">
                 <div className="">
                   <div className="px-[30px] pt-[18px] pb-0">
-                    <div className="relative border-b-[1px] border-solid border-b-[var(--ui-border-color)]">
+                    <div className="relative">
                       <div className="w-full gap-x-[16px] ">
                         <div className="justify-between flex items-center pb-3 gap-1.5">
                           <Heading className="flex gap-3 items-center ">
@@ -46,11 +46,32 @@
                             <IconButton size="small" icon={Comment}></IconButton>
                           </div>
                         </div>
-                        <TabList>
-                          <Tab index={0}>Tabla</Tab>
-                          <Tab index={1}>Grafico</Tab>
-                          <Tab index={2}>Calendario</Tab>
-                        </TabList>
+                        <div className="border-b-[1px] border-solid border-b-[var(--ui-border-color)]">
+                          <TabList>
+                            <Tab index={0}>Tabla</Tab>
+                            <Tab index={1}>Grafico</Tab>
+                            <Tab index={2}>Calendario</Tab>
+                          </TabList>
+                        </div>
+                        <div className="h-16 w-full flex items-center">
+                          <div className="w-full">
+                            <div className="border-none flex px-0 py-4">
+                              <div className="p-0 m-0 flex items-center justify-start">
+                                <div className="mr-[14px]">
+                                  <Button size="small" onClick={handleOpenModal}>Elemento nuevo</Button>
+                                  <ModalC showModal={showModal} onClose={handleCloseModal} onCreateCompany={handleCreateCompany}/>
+                                </div>
+                                <div className="ml-0 w-full items-center flex overflow-auto">
+                                  <Search size="small" placeholder="Buscar"/>
+                                  <Search size="small" placeholder="Buscar"/>
+                                  <Search size="small" placeholder="Buscar"/>
+                                  <Search size="small" placeholder="Buscar"/>
+                                  <Search size="small" placeholder="Buscar"/>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -61,13 +82,7 @@
               
              
             </div>
-            <div className="px-8 py-2 flex overflow-x-auto justify-between gap-3">
-              <div className="flex gap-3">
-                <Button size="small" onClick={handleOpenModal}>Elemento nuevo</Button>
-                <ModalC showModal={showModal} onClose={handleCloseModal} onCreateCompany={handleCreateCompany}/>
-                <Search size="small" placeholder="Buscar"/>
-              </div>
-            </div> 
+           
 
             <div className="grow">
             <div className="mr-0 mt-0 box-content pb-10 pl-10">

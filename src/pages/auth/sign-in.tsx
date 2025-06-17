@@ -33,7 +33,7 @@ const signIn = () => {
             <form onSubmit={handleSubmit} className="p-5 rounded-lg flex flex-col gap-4">
               <Flex direction="column" gap={8}>
                 <Field name="email" component={TextInput} type="text" size="medium" placeholder="nombre@empresa.com" />
-                <Field name="password" component={TextInput} type="text" size="medium" placeholder="contraseña" />
+                <Field name="password" component={TextInput} type="password" size="medium" placeholder="contraseña" />
                 <Link text="¿Olvidaste tu contraseña?" className="w-auto" href="/"></Link>
                 <Button type="submit" loaderClassName="" size="medium" className="flex w-full" disabled={submitting} rightIcon={MoveArrowRight}>Iniciar sesión</Button>
                 <Flex gap="small" direction="row" justify="center">
