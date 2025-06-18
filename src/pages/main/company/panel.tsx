@@ -19,7 +19,7 @@
     }
 
     return (
-      <div className="h-full bg-white w-full rounded-t-lg outline-none text-[#323338]">
+      <div className="h-full bg-white rounded-t-lg outline-none text-[#323338]"> 
         <Tabs defaultIndex={0}>
           <div className="scroll-pt-[250px] contain-layout relative cursor-default flex-col h-full flex select-none overflow-auto overflow-y-scroll">
             {/*<div className="left-0">
@@ -28,6 +28,7 @@
               </div>
             </div>*/}
             <div className="mr-0 top-0 left-0 sticky z-[3000]">
+           
               <div className="relative">
                 <div className="">
                   <div className="px-[30px] pt-[18px] pb-0">
@@ -56,17 +57,22 @@
                         <div className="h-16 w-full flex items-center">
                           <div className="w-full">
                             <div className="border-none flex px-0 py-4">
-                              <div className="p-0 m-0 flex items-center justify-start">
+                              <div className="p-0 m-0 flex items-center justify-start w-full">
                                 <div className="mr-[14px]">
                                   <Button size="small" onClick={handleOpenModal}>Elemento nuevo</Button>
                                   <ModalC showModal={showModal} onClose={handleCloseModal} onCreateCompany={handleCreateCompany}/>
                                 </div>
-                                <div className="ml-0 w-full items-center flex overflow-auto">
-                                  <Search size="small" placeholder="Buscar"/>
-                                  <Search size="small" placeholder="Buscar"/>
-                                  <Search size="small" placeholder="Buscar"/>
-                                  <Search size="small" placeholder="Buscar"/>
-                                  <Search size="small" placeholder="Buscar"/>
+                                <div className="ml-0 w-full flex-1 overflow-x-auto scroll">
+                                  <div className="flex items-center gap-3 w-max"> 
+                                    <Search size="small" placeholder="Buscar"/>
+                                    <Search size="small" placeholder="Buscar"/>
+                                    <Search size="small" placeholder="Buscar"/>
+                                    <Search size="small" placeholder="Buscar"/>
+                                    <Search size="small" placeholder="Buscar"/>
+                                    <Search size="small" placeholder="Buscar"/>
+                                    <Search size="small" placeholder="Buscar"/>
+                                    <Search size="small" placeholder="Buscar"/> 
+                                  </div>
                                 </div>
                               </div>
                             </div>
@@ -77,8 +83,6 @@
                   </div>
                 </div>
               </div>
-
-
               
              
             </div>
