@@ -25,7 +25,7 @@ const TableView = () => {
 
   const displayCompanies = (global: ICompany[]) => {
     return (
-      <div>
+      <div className="pb-8">
         {global.map((company) => (
           <CompanySection key={company.id} company={company} />
         ))}

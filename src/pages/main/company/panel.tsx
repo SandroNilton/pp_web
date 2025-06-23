@@ -21,12 +21,7 @@
     return (
       <div className="max-h-full rounded-t-lg bg-white outline-none text-[#323338]"> 
         <Tabs defaultIndex={0}>
-          <div className="scroll-pt-[250px] contain-layout relative cursor-default flex-col h-full flex select-none  overflow-auto overflow-y-scroll">
-            {/*<div className="left-0">
-              <div id="board-header-banner" className="flex sticky items-center mr-0">
-                <AlertBanner ariaLabel="hola" className="rounded-t-lg " closeButtonAriaLabel="x"></AlertBanner> scroll
-              </div>
-            </div>*/}
+          <div className="scroll-pt-[250px] contain-layout relative cursor-default flex-col h-full flex select-none scroll overflow-auto overflow-y-scroll" style={{ height: 'calc(100vh - 3rem)' }}>
             <div className="mr-0 top-0 left-0 sticky z-[3000] bg-white rounded-t-lg">
               <div className="relative">
                 <div className="">
@@ -75,34 +70,23 @@
                   </div>
                 </div>
               </div>
-              
-             
             </div>
-
             <div className="grow">
-              <div className="h-max  mt-0 box-content pb-10 pl-2">
-                <div className="h-[592px] min-w-[1131.01px]">
-                  <div className="w-full h-full outline-none relative">
-                    <TabPanel index={0}>
-                      <TableView/>
-                    </TabPanel>
-                    <TabPanel index={1}>
-                      <ChartView/>
-                    </TabPanel>
-                    <TabPanel index={2}>
-                      <CalendarView/>
-                    </TabPanel>
-                  </div>
+              <div className="h-max w-max mt-0 box-content pl-2">
+                <div className="w-full h-full outline-none relative">
+                  <TabPanel index={0}>
+                    <TableView/>
+                  </TabPanel>
+                  <TabPanel index={1}>
+                    <ChartView/>
+                  </TabPanel>
+                  <TabPanel index={2}>
+                    <CalendarView/>
+                  </TabPanel>
                 </div>
               </div>
-
-
-
-              
-          
+            </div>
           </div>
-          </div>
-          
         </Tabs>
       </div>
     );

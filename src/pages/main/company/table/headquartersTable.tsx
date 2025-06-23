@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ColumnDef, ExpandedState, flexRender, getCoreRowModel, getExpandedRowModel, useReactTable, Row } from "@tanstack/react-table";
 import { IHeadquarter } from "../../../../models/headquarter";
-import { EditableHeading, EditableText, Icon, IconButton, Text } from "@vibe/core";
+import { EditableText, Icon, IconButton, Text } from "@vibe/core";
 import { Check, CloseSmall, DropdownChevronDown, DropdownChevronRight, Open } from "@vibe/icons";
 
 interface Props {

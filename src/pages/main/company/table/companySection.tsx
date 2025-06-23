@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { ICompany } from '../../../../models/company';
 import { HeadquartersTable } from "./headquartersTable";
-//import { HeadquartersTable } from "./HeadquartersTable";
-import { Avatar, EditableHeading, EditableText, IconButton, Text } from '@vibe/core';
+import { EditableHeading, IconButton, Text } from '@vibe/core';
 import { DropdownChevronDown, DropdownChevronRight, Menu } from "@vibe/icons";
 
 interface Props {
@@ -35,7 +34,8 @@ export const CompanySection: React.FC<Props> = ({ company }) => {
           {company.headquarters && company.headquarters.length > 0 ? (
             <HeadquartersTable headquarter={company.headquarters} />
           ) : (
-            <em>Sin sedes registradas</em>
+            /*<em>Sin sedes registradas</em>*/
+            <HeadquartersTable headquarter={[]} />
           )}
         </div>
       )}
