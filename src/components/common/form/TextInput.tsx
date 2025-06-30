@@ -4,7 +4,9 @@ import { FieldRenderProps } from 'react-final-form';
 
 interface IProps extends FieldRenderProps<string, HTMLElement>, TextFieldProps {}
 
-export const TextInput: React.FC<IProps> = ({ input: {name, value, onChange, onBlur, onFocus }, placeholder, type = 'text', size, title = '', meta: {touched, error}, ...rest }) => {
+import type { TextFieldType } from '@vibe/core';
+
+export const TextInput: React.FC<IProps> = ({ input: {name, value, title, type, maxLength, onChange, onBlur, onFocus }, placeholder, size, meta: {touched, error}, ...rest }) => {
   
   let validation;
   
@@ -16,12 +18,10 @@ export const TextInput: React.FC<IProps> = ({ input: {name, value, onChange, onB
     }
   }
 
-  if (name === 'password') {
-    type = 'password';
-  }
-  
+  const textFieldType = type as TextFieldType | undefined;
+
   return (
-    <TextField id={`input-${name}`} name={name} value={value} onChange={(e) => onChange(e)} onFocus={(e) => onFocus?.(e as React.FocusEvent<HTMLElement>)} onBlur={(e) => onBlur?.(e as React.FocusEvent<HTMLElement>)} placeholder={placeholder} size={size} title={title} validation={validation} {...rest} type={type}>
+    <TextField id={`input-${name}`} name={name} value={value} maxLength={maxLength} type={textFieldType} onChange={(e) => onChange(e)} onFocus={(e) => onFocus?.(e as React.FocusEvent<HTMLElement>)} onBlur={(e) => onBlur?.(e as React.FocusEvent<HTMLElement>)} placeholder={placeholder} size={size} title={title} validation={validation} {...rest} >
     </TextField> 
   )
 }

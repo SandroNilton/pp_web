@@ -27,7 +27,6 @@ export const CompanySection: React.FC<Props> = ({ company }) => {
           </div>
         </div>
       </div>
-      
 
       {isOpen && (
         <div>

@@ -14,6 +14,17 @@ export default class CompanyStore {
     this.rootStore = rootStore;
   }
 
+  @action createCompany = async (values: ICompany) => {
+    try {
+      var response = await agent.Companies.create(values);
+      runInAction(() => {
+        return response;
+      })
+    } catch (error) {
+      throw error;
+    }
+  }
+
   @action loadCompanies = async () => {
     try {
       var response = await agent.Companies.list();

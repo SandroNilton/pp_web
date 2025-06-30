@@ -1,4 +1,4 @@
-  import { AlertBanner, Button, Heading, Icon, IconButton, Search, Tooltip } from "@vibe/core";
+  import { Button, Heading, Icon, IconButton, Search, Tooltip } from "@vibe/core";
   import React, { useState } from "react";
   import ModalC from "./modal/modal";
   import { ICompany } from "../../../models/company";

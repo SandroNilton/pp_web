@@ -1,8 +1,13 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useContext, useEffect } from 'react';
 import { Modal, ModalHeader, ModalContent, ModalFooter, ModalBasicLayout } from "@vibe/core/next"; 
-import { Flex, Heading, TextField } from '@vibe/core';
+import { Button, Flex, Heading } from '@vibe/core';
 import { ICompany } from '../../../../models/company';
-import axios from 'axios';
+import { Form as FinalForm, Field } from "react-final-form";
+import { combineValidators, isRequired } from 'revalidate';
+import TextInput from '../../../../components/common/form/TextInput';
+import { FORM_ERROR } from 'final-form';
+import { RootStoreContext } from '../../../../stores/rootStore';
+import { v4 as uuid } from 'uuid';
 
 interface ModalCProps {
   showModal: boolean;
@@ -10,42 +15,62 @@ interface ModalCProps {
   onCreateCompany: (company: ICompany) => void
 }
 
-
 const ModalC: React.FC<ModalCProps> = ({ showModal, onClose, onCreateCompany }) => {
 
-  const initialCompany = {
+  const initialCompany: ICompany = {
     id: '',
+    ruc: '',
     name: '',
-    group: ''
+    leg_representative: '',
+    str_activity: '',
+    eco_activity: '',
+  } 
+
+  const validate = combineValidators({
+      ruc: isRequired('ruc'),
+      name : isRequired('name'),
+      str_activity: isRequired('str_activity'),
+      leg_representative: isRequired('leg_representative'),
+      eco_activity: isRequired('eco_activity'),
+  });
+
+  const rootStore = useContext(RootStoreContext);
+  const { createCompany } = rootStore.companyStore;
+
+  const handleSubmitForm = async (values: ICompany) => {
+    values.id = uuid();
+    return createCompany(values).catch((error) => ({[FORM_ERROR]: error}));
   }
-
-  const onSubmit = useCallback((data: ICompany) => {
-    axios.post<ICompany[]>('http://localhost:5099/api/companies', data)
-    .then((response) => {
-      onClose();
-      onCreateCompany(data)
-      console.log(response);
-    })
-    .catch((error) => {
-      console.error('Error al obtener las empresas', error);
-    });
-  }, []);
-
-  const validationRules = {
-    name: {
-      required: 'El nombre es obligatorio',
-    },
-  };
 
   return (
     <Modal size='large' id="modal-basic" onClose={onClose} show={showModal} className='lg:w-[505px] md:w-[380px] sm:w-[380px] w-full'>
       <ModalBasicLayout>
-        <ModalHeader title description={ <Heading type='h1'>Empresa</Heading>} />
+        <ModalHeader title description={ <Heading type='h1'>Agregar Empresa</Heading> } />
         <ModalContent>
-          <form>
-            
-            
-          </form>
+          {/*<div>
+            <div className="mt-4 mb-8"> 
+              <div className='rounded-3xl flex items-center justify-center relative'>
+                <Button>Editar</Button>
+              </div>
+            </div>
+          </div>*/}
+          <FinalForm onSubmit={handleSubmitForm} validate={validate} render={({ handleSubmit, submitting, form }) => (
+            <form onSubmit={handleSubmit} className="p-5 rounded-lg flex flex-col gap-4">
+              <Flex direction="column" gap={8}>
+                <Field name="ruc" maxLength={11} component={TextInput} type="text" title="RUC" size="medium" placeholder="Elejir un RUC para tu empresa" />
+                <Field name="name" component={TextInput} type="text" title="Nombre de la empresa" size="medium" placeholder="Elejir un nombre para tu empresa" />
+              </Flex>
+              <Flex direction='column' gap={8}>
+                <Field name="str_activity" component={TextInput} type="text" title="Actividad económica" size="medium" placeholder="Elejir una actividad económica para tu empresa" />
+                <Field name="leg_representative" component={TextInput} type="text" title="Representante legal" size="medium" placeholder="Elejir un representante legal para tu empresa" />
+                <Field name="eco_activity" component={TextInput} type="text" title="Actividad económica secundaria" size="medium" placeholder="Elejir una actividad económica secundaria para tu empresa" />
+              </Flex>
+              <div className='justify-end flex items-center gap-2'>
+                <Button type="button" kind='tertiary' onClick={onClose} className="flex">Cancelar</Button>
+                <Button type="submit" kind='primary' className="flex" disabled={submitting}>Agregar empresa</Button>
+              </div>
+            </form>
+          )} />
         </ModalContent>
       </ModalBasicLayout>
     </Modal>

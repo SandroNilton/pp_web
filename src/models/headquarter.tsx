@@ -5,6 +5,9 @@ export interface IHeadquarter {
   code: string;
   address: string;
   pahs: string;
+  icn: string;
+  phone: string;
+  email: string;
   group: string;
   companyId: string;
   areas: IArea[];

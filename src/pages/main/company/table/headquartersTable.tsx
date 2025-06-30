@@ -39,8 +39,35 @@ const [expanded, setExpanded] = useState<ExpandedState>({});
       header: "PAHS",
       accessorKey: "pahs",
       cell: ({ row }) => (
-        <div>
+        <div className="flex w-full items-center align-middle justify-center px-1 max-w-20 min-w-20">
           <Icon icon={ row.original.pahs ? Check : CloseSmall } style={{ color:  row.original.pahs ? "#0073ea" : "#ff7777" }}></Icon>
+        </div>
+      )
+    },
+    {
+      header: "Seguro",
+      accessorKey: "icn",
+      cell: ({ row }) => (
+        <div className="flex w-full items-center align-middle justify-center px-1 max-w-26 min-w-26">
+          <EditableText type="text1" className="m-0 pb-0.5" value={ row.original.icn }></EditableText>
+        </div>
+      )
+    },
+     {
+      header: "Correo",
+      accessorKey: "email",
+      cell: ({ row }) => (
+        <div className="flex w-full items-center align-middle justify-center px-1 max-w-26 min-w-26">
+          <EditableText type="text1" className="m-0 pb-0.5" value={ row.original.email }></EditableText>
+        </div>
+      )
+    },
+     {
+      header: "Telefono",
+      accessorKey: "phone",
+      cell: ({ row }) => (
+        <div className="flex w-full items-center align-middle justify-center px-1 max-w-26 min-w-26">
+          <EditableText type="text1" className="m-0 pb-0.5" value={ row.original.phone }></EditableText>
         </div>
       )
     },
