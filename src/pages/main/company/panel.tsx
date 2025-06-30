@@ -1,5 +1,5 @@
   import { Button, Heading, Icon, IconButton, Search, Tooltip } from "@vibe/core";
-  import React, { useState } from "react";
+  import React, { useContext, useState } from "react";
   import ModalC from "./modal/modal";
   import { ICompany } from "../../../models/company";
   import { Comment, Info } from "@vibe/icons";
@@ -7,15 +7,18 @@
   import TableView from "./table/table";
   import ChartView from "./chart/chart";
   import CalendarView from "./calendar/calendar";
+  import { RootStoreContext } from '../../../stores/rootStore';
+
 
   const Panel = () => {
+      const rootStore = useContext(RootStoreContext);
+    
     const [showModal, setShowModal] = useState(false);
     const handleOpenModal = () => setShowModal(true);
     const handleCloseModal = () => { setShowModal(false); }
     const handleCreateCompany = (company: ICompany) => {
-      //setCompanies([...companies, company])
-      /*loadCompanies();*/
-      console.log(company)
+      console.log("New company created:", company);
+      rootStore.companyStore.loadGlobal();
     }
 
     return (

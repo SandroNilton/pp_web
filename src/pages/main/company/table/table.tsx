@@ -1,11 +1,7 @@
-import { IconButton, Loader, Text } from "@vibe/core";
+import { Loader, Text } from "@vibe/core";
 import React, { useContext, useEffect, useState } from 'react';
-import { getExpandedRowModel, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table';
 import { RootStoreContext } from '../../../../stores/rootStore';
 import { ICompany } from "../../../../models/company";
-import { Menu } from "@vibe/icons";
-import { IHeadquarter } from "../../../../models/headquarter";
-import { IArea } from "../../../../models/area";
 import { CompanySection } from "./companySection";
 
 const TableView = () => {

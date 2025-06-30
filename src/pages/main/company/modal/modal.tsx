@@ -7,6 +7,7 @@ import { combineValidators, isRequired } from 'revalidate';
 import TextInput from '../../../../components/common/form/TextInput';
 import { FORM_ERROR } from 'final-form';
 import { RootStoreContext } from '../../../../stores/rootStore';
+import { toast } from '../../../../components/common/toast/Toast'; 
 import { v4 as uuid } from 'uuid';
 
 interface ModalCProps {
@@ -39,7 +40,16 @@ const ModalC: React.FC<ModalCProps> = ({ showModal, onClose, onCreateCompany }) 
 
   const handleSubmitForm = async (values: ICompany) => {
     values.id = uuid();
-    return createCompany(values).catch((error) => ({[FORM_ERROR]: error}));
+    values.headquarters = [];
+    //return createCompany(values).catch((error) => ({[FORM_ERROR]: error}));
+    try {
+      await createCompany(values);
+      toast.push(`La empresa ${ values.name } se creo correctamente`, 'positive');      
+      onCreateCompany(values);
+      onClose();
+    } catch (error) {
+      return { [FORM_ERROR]: error };
+    }
   }
 
   return (
