@@ -1,5 +1,5 @@
 import { AlertBanner, Button, Icon, IconButton, MenuDivider } from '@vibe/core';
-import { Add, Favorite, Home, MyWeek, Work, Workspace } from "@vibe/icons";
+import { Add, Favorite, Home, MyWeek, Person, Security, Work, Workspace } from "@vibe/icons";
 import BoardList from './board/board';
 import FavoriteList from './favorite/favorite';
 import React from 'react';

@@ -39,7 +39,7 @@ const TableView = () => {
 
   if (global.length != 0) {
     return (
-      <div className='flex flex-1 opacity-100 transition-opacity py-1 h-full '>
+      <div className='flex flex-1 opacity-100 transition-opacity py-1 h-full'>
         <div className='flex flex-col gap-1 grow w-full px-4'>
           <div>
             { displayCompanies(global) }
