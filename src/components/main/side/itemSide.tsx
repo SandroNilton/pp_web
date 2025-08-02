@@ -1,7 +1,6 @@
 import { Button, Icon, IconProps } from '@vibe/core';
 import { Link, useLocation } from "react-router-dom";
 import React from 'react';
-import { Add } from '@vibe/icons/.';
 
 interface ItemSideProps {
   route?: string;

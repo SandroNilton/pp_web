@@ -18,15 +18,6 @@ interface ModalCProps {
 
 const ModalC: React.FC<ModalCProps> = ({ showModal, onClose, onCreateCompany }) => {
 
-  const initialCompany: ICompany = {
-    id: '',
-    ruc: '',
-    name: '',
-    leg_representative: '',
-    str_activity: '',
-    eco_activity: '',
-  } 
-
   const validate = combineValidators({
       ruc: isRequired('ruc'),
       name : isRequired('name'),
@@ -71,9 +62,9 @@ const ModalC: React.FC<ModalCProps> = ({ showModal, onClose, onCreateCompany }) 
                 <Field name="name" component={TextInput} type="text" title="Nombre de la empresa" size="medium" placeholder="Elejir un nombre para tu empresa" />
               </Flex>
               <Flex direction='column' gap={8}>
-                <Field name="str_activity" component={TextInput} type="text" title="Actividad económica" size="medium" placeholder="Elejir una actividad económica para tu empresa" />
+                <Field name="str_activity" component={TextInput} type="text" title="Inicio de actividad" size="medium" placeholder="Elejir un inicio de actividad para tu empresa" />
                 <Field name="leg_representative" component={TextInput} type="text" title="Representante legal" size="medium" placeholder="Elejir un representante legal para tu empresa" />
-                <Field name="eco_activity" component={TextInput} type="text" title="Actividad económica secundaria" size="medium" placeholder="Elejir una actividad económica secundaria para tu empresa" />
+                <Field name="eco_activity" component={TextInput} type="text" title="Actividad económica" size="medium" placeholder="Elejir una actividad económica para tu empresa" />
               </Flex>
               <div className='justify-end flex items-center gap-2'>
                 <Button type="button" kind='tertiary' onClick={onClose} className="flex">Cancelar</Button>

@@ -1,10 +1,11 @@
-import { IBoard } from '../models/board';
+import { IBoard } from '../models/board/board';
 import { ICompany } from '../models/company';
 import { ISession, ISessionFormValues } from '../models/auth/session'; 
 import axios, { AxiosResponse } from 'axios';
 import { history } from '../App';
 import { toast } from '../components/common/toast/Toast'; 
 import { IMediaFormValues } from '../models/media';
+import Board from '../components/main/side/board/board';
 
 axios.defaults.baseURL = 'https://localhost:5001/api';
 
@@ -60,10 +61,16 @@ const request = {
 const Boards = {
   list: (): Promise<IBoard[]> => request.get('/board'),
   favorite: (): Promise<IBoard[]> => request.get('/board/favorite'),
-  details: (id: string) => request.get(`/board/${id}`),
+  details: (id: string): Promise<IBoard> => request.get(`/board/${id}`),
   create: (board: IBoard) => request.post('/board', board),
   update: (board: IBoard) => request.put(`/board/${board.id}`, board),
   delete: (id: string) => request.delete(`/board/${id}`),
+}
+
+const BoardViews = {
+  create: (boardId: string, view: IBoard) => request.post(`/board/${boardId}/view`, view),
+  update: (boardId: string, view: IBoard) => request.put(`/board/${boardId}/view/${view.id}`, view),
+  delete: (boardId: string, id: string) => request.delete(`/board/${boardId}/view/${id}`),
 }
 
 const Companies = {

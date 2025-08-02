@@ -1,5 +1,5 @@
-import { AlertBanner, Button, Icon, IconButton, MenuDivider } from '@vibe/core';
-import { Add, Favorite, Home, MyWeek, Person, Security, Work, Workspace } from "@vibe/icons";
+import { Button, Icon } from '@vibe/core';
+import { Add, Favorite, Home, MyWeek, Work, Workspace } from "@vibe/icons";
 import BoardList from './board/board';
 import FavoriteList from './favorite/favorite';
 import React from 'react';
@@ -7,6 +7,8 @@ import { useEffect, useRef, useState } from 'react';
 import LinkButton from './button/link';
 import GroupButton from './button/group';
 import OptionButton from './button/option';
+import { IBoard } from '../../../models/board/board';
+import ModalB from './modal/modal';
 
 const Side = () => {
 
@@ -20,6 +22,13 @@ const toggleSide = () => {
   const [expandedSection, setExpandedSection] = useState<'workspaces' | 'favorites'>('workspaces');
   const sidebarRef = useRef<HTMLDivElement>(null);
   const [sidebarHeight, setSidebarHeight] = useState(0);
+
+  const [showModal, setShowModal] = useState(false);
+  const handleOpenModal = () => setShowModal(true);
+  const handleCloseModal = () => { setShowModal(false); }
+  const handleCreateBoard = (board: IBoard) => {
+    console.log("New board created:", board);
+  }
 
   useEffect(() => {
     const updateHeight = () => {
@@ -60,12 +69,13 @@ const toggleSide = () => {
         </div>
         <div className='flex flex-col gap-0.5 py-1 px-3'>
           <GroupButton label="Espacios de trabajo" icon={Workspace} onClick={() => toggleSection('workspaces')} expandedSection={expandedSection}>
-            <Button kind='tertiary' size='xs' onClick={alert} noSidePadding className='px-1'>
+            <Button kind='tertiary' size='xs' onClick={handleOpenModal} noSidePadding className='px-1'>
               <Icon icon={Add} iconSize={16}/>
             </Button>
+            <ModalB showModal={showModal} onClose={handleCloseModal} onCreateBoard={handleCreateBoard}/>
           </GroupButton>
           {expandedSection === 'workspaces' && (
-            <div className="overflow-y-auto" style={{ maxHeight: availableHeight, height: availableHeight }}>
+            <div className="overflow-y-auto scroll pr-3 -mr-3" style={{ maxHeight: availableHeight, height: availableHeight }}>
               <BoardList/>
             </div>
           )}

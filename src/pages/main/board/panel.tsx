@@ -6,6 +6,7 @@ import GanttView from "./gantt/gantt";
 import React from "react";
 
 import { RouteComponentProps } from 'react-router-dom';
+import { Tabs } from "../../../components/common/tab/Tabs";
 
 interface MatchParams { 
   id: string;
@@ -15,7 +16,20 @@ const Panel = ({ match }: RouteComponentProps<MatchParams>) => {
   const { id } = match.params;
   const [activeTabId, setActiveTabId] = React.useState(0);
 
+  
+
   return (
+    <div className="max-h-full rounded-t-lg bg-white outline-none text-[#323338]"> 
+      <Tabs defaultIndex={0}>
+        <div className="scroll-pt-[250px] contain-layout relative cursor-default flex-col h-full flex select-none scroll overflow-auto overflow-y-scroll" style={{ height: 'calc(100vh - 3rem)' }}>
+          <div className="mr-0 top-0 left-0 sticky z-[3000] bg-white rounded-t-lg">
+            
+          </div>
+        </div>
+      </Tabs>
+     {/*<div className="max-h-full rounded-t-lg bg-white outline-none text-[#323338]"> 
+             <div className="scroll-pt-[250px] contain-layout relative cursor-default flex-col h-full flex select-none scroll overflow-auto overflow-y-scroll" style={{ height: 'calc(100vh - 3rem)' }}>
+                <div className="mr-0 top-0 left-0 sticky z-[3000] bg-white rounded-t-lg"></div>
     <div className="w-full cursor-default flex flex-col select-none px-[30px] ">
       <div className="top-0 sticky bg-[var(--primary-background-color)] pt-[15px]">
         <div className="justify-between z-50 flex items-center w-full pb-3 gap-8" style={{ position: 'relative', zIndex: 100 }}>
@@ -46,6 +60,8 @@ const Panel = ({ match }: RouteComponentProps<MatchParams>) => {
           </TabPanel>
         </TabPanels>
       </div>
+    </div>
+    </div>*/}
     </div>
   );
 };

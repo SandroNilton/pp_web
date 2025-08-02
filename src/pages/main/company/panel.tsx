@@ -11,8 +11,7 @@
 
 
   const Panel = () => {
-      const rootStore = useContext(RootStoreContext);
-    
+    const rootStore = useContext(RootStoreContext);
     const [showModal, setShowModal] = useState(false);
     const handleOpenModal = () => setShowModal(true);
     const handleCloseModal = () => { setShowModal(false); }
@@ -75,7 +74,8 @@
               </div>
             </div>
             <div className="grow">
-              <div className="h-max w-max mt-0 box-content pl-2">
+              {/* - <div className="h-max w-max mt-0 box-content pl-2"> - */}
+              <div className="h-max w-full mt-0 box-content">
                 <div className="w-full h-full outline-none relative">
                   <TabPanel index={0}>
                     <TableView/>

@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import Item from '../item/item';
 import { Loader, Text } from '@vibe/core';
-import { IBoard } from '../../../../models/board';
+import { IBoard } from '../../../../models/board/board';
 import { RootStoreContext } from '../../../../stores/rootStore';
 import React from 'react';
 
@@ -23,7 +23,7 @@ const Board = () => {
   const displayBoards = (boards: IBoard[]) => {
     return (
       boards.length > 0 &&  boards.map((board) => (
-        <Item route={`/board/${board.id}` } key={board.id} label={board.name} isSideOpen={false}/>
+        <Item route={`/board/${board.id}` } key={board.id} label={board.name} board={board} isSideOpen={false}/>
       )
     ))
   }

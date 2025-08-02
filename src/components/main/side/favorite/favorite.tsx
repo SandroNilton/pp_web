@@ -1,6 +1,6 @@
 import { Loader, Text } from '@vibe/core';
 import Item from '../item/item';
-import { IBoard } from '../../../../models/board';
+import { IBoard } from '../../../../models/board/board';
 import React, { useContext, useEffect, useState } from 'react';
 import { RootStoreContext } from '../../../../stores/rootStore';
 
@@ -22,7 +22,7 @@ const Favorite = () => {
   const displayFavorites = (favorites: IBoard[]) => {
     return (
       favorites.length > 0 &&  favorites.map((board) => (
-        <Item route={`/board/${board.id}` } key={board.id} label={board.name} isSideOpen={false}/>
+        <Item route={`/board/${board.id}` } key={board.id} label={board.name} board={board} isSideOpen={false}/>
       )
     ))
   }
