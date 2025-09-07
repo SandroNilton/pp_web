@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { ICompany } from '../../../../models/company';
-import { IHeadquarter } from '../../../../models/headquarter';
-import { IArea } from '../../../../models/area';
+import { IHeadquarter } from '../../../../models/company/headquarter';
+import { IArea } from '../../../../models/company/area';
 import React from 'react';
 
 const useDataLoader = () => {

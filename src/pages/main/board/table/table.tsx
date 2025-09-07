@@ -1,583 +1,72 @@
-import { Avatar, Button, Label, Table, TableBody, TableCell, TableHeader, TableHeaderCell, TableRow } from "@vibe/core";
-import React from "react";
+import { Avatar, Button, Label, Loader, Table, TableBody, TableCell, TableHeader, TableHeaderCell, TableRow, Text } from "@vibe/core";
+import React, { useContext, useEffect, useState } from 'react';
+import { observer } from 'mobx-react';
+import { RootStoreContext } from '../../../../stores/rootStore';
+import { IGeneralObjective } from "../../../../models/board/generalObjective";
+import { GeneralObjectiveSection } from "./generalObjectiveSection";
 
-const TableView = () => {
-  return ( <div>hola</div>)
-/*
-  return (
-    <div>
-      <div className="py-4 top-0 sticky flex justify-between h-full overflow-y-hidden overflow-x-auto">
-        <div>
-          <Button size="small">Crear objetivo General</Button>
+interface TableViewProps {
+  board: string;
+}
+
+const TableView: React.FC<TableViewProps> = ({ board }) => {
+const rootStore = useContext(RootStoreContext);
+  const { generalObjectives, list } = rootStore.generalObjectiveStore;
+  const [ loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      await list(board);
+      setLoading(false);
+      console.log('global', generalObjectives);
+    };
+    fetchData();
+  }, [list, board]);
+
+  const displayGeneralObjectives = (generalObjectives: IGeneralObjective[]) => {
+    return (
+      <div className="pb-8">
+        { generalObjectives.map((generalObjective) => (
+          <GeneralObjectiveSection key={generalObjective.id } generalObjective={generalObjective} />
+        )) }
+      </div>
+    )
+  }
+
+  if (loading) {
+    return (
+      <div className="flex flex-1 items-center justify-center h-full">
+        <Loader hasBackground size="small" color="primary" />
+      </div>
+    );
+  }
+
+  if (generalObjectives?.length != 0) {
+    return (
+      <div className='flex flex-1 opacity-100 transition-opacity py-1 h-full'>
+        <div className='flex flex-col gap-1 grow w-full px-4'>
+          <div>
+            { displayGeneralObjectives(generalObjectives) }
+          </div>
         </div>
       </div>
-      <div>
+    )
+  }
 
-
-
-
-
-
-      <Table
-  columns={[
-    {
-      id: 'sentOn',
-      loadingStateType: 'medium-text',
-      title: 'Sent on',
-      width: 150
-    },
-    {
-      id: 'subject',
-      loadingStateType: 'long-text',
-      title: 'Subject'
-    },
-    {
-      id: 'sentBy',
-      infoContent: 'This is the sender',
-      loadingStateType: 'circle',
-      title: 'Sent by',
-      width: {
-        max: 200,
-        min: 120
-      }
-    },
-    {
-      id: 'status',
-      infoContent: 'Info content for the status column',
-      loadingStateType: 'medium-text',
-      title: 'Status',
-      width: 150
-    },
-    {
-      id: 'emailsSent',
-      loadingStateType: 'medium-text',
-      title: 'Emails sent',
-      width: 150
-    }
-  ]}
-  errorState={<div>Error loading data</div>}
-  emptyState={<div>No data available</div>}
->
-  <TableHeader>
-    <TableHeaderCell title="Sent on" />
-    <TableHeaderCell title="Subject" />
-    <TableHeaderCell title="Sent by" />
-    <TableHeaderCell title="Status" />
-    <TableHeaderCell title="Emails sent" />
-  </TableHeader>
-  <TableBody>
-  <TableRow>
-      <TableCell>
-        2020-01-01
-      </TableCell>
-      <TableCell>
-        Lorem ipsum dolor
-      </TableCell>
-      <TableCell>
-        <Avatar text="John Doe" />
-      </TableCell>
-      <TableCell>
-        <Label
-          color="positive"
-          text="Sent"
-        />
-      </TableCell>
-      <TableCell>
-        100
-      </TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>
-        2020-01-01
-      </TableCell>
-      <TableCell>
-        Lorem ipsum dolor
-      </TableCell>
-      <TableCell>
-        <Avatar text="John Doe" />
-      </TableCell>
-      <TableCell>
-        <Label
-          color="positive"
-          text="Sent"
-        />
-      </TableCell>
-      <TableCell>
-        100
-      </TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>
-        2020-01-01
-      </TableCell>
-      <TableCell>
-        Lorem ipsum dolor
-      </TableCell>
-      <TableCell>
-        <Avatar text="John Doe" />
-      </TableCell>
-      <TableCell>
-        <Label
-          color="positive"
-          text="Sent"
-        />
-      </TableCell>
-      <TableCell>
-        100
-      </TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>
-        2020-01-01
-      </TableCell>
-      <TableCell>
-        Lorem ipsum dolor
-      </TableCell>
-      <TableCell>
-        <Avatar text="John Doe" />
-      </TableCell>
-      <TableCell>
-        <Label
-          color="positive"
-          text="Sent"
-        />
-      </TableCell>
-      <TableCell>
-        100
-      </TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>
-        2020-01-01
-      </TableCell>
-      <TableCell>
-        Lorem ipsum dolor
-      </TableCell>
-      <TableCell>
-        <Avatar text="John Doe" />
-      </TableCell>
-      <TableCell>
-        <Label
-          color="positive"
-          text="Sent"
-        />
-      </TableCell>
-      <TableCell>
-        100
-      </TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>
-        2020-01-01
-      </TableCell>
-      <TableCell>
-        Lorem ipsum dolor
-      </TableCell>
-      <TableCell>
-        <Avatar text="John Doe" />
-      </TableCell>
-      <TableCell>
-        <Label
-          color="positive"
-          text="Sent"
-        />
-      </TableCell>
-      <TableCell>
-        100
-      </TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>
-        2020-01-01
-      </TableCell>
-      <TableCell>
-        Lorem ipsum dolor
-      </TableCell>
-      <TableCell>
-        <Avatar text="John Doe" />
-      </TableCell>
-      <TableCell>
-        <Label
-          color="positive"
-          text="Sent"
-        />
-      </TableCell>
-      <TableCell>
-        100
-      </TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>
-        2020-01-01
-      </TableCell>
-      <TableCell>
-        Lorem ipsum dolor
-      </TableCell>
-      <TableCell>
-        <Avatar text="John Doe" />
-      </TableCell>
-      <TableCell>
-        <Label
-          color="positive"
-          text="Sent"
-        />
-      </TableCell>
-      <TableCell>
-        100
-      </TableCell>
-    </TableRow>
-  <TableRow>
-      <TableCell>
-        2020-01-01
-      </TableCell>
-      <TableCell>
-        Lorem ipsum dolor
-      </TableCell>
-      <TableCell>
-        <Avatar text="John Doe" />
-      </TableCell>
-      <TableCell>
-        <Label
-          color="positive"
-          text="Sent"
-        />
-      </TableCell>
-      <TableCell>
-        100
-      </TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>
-        2020-01-01
-      </TableCell>
-      <TableCell>
-        Lorem ipsum dolor
-      </TableCell>
-      <TableCell>
-        <Avatar text="John Doe" />
-      </TableCell>
-      <TableCell>
-        <Label
-          color="positive"
-          text="Sent"
-        />
-      </TableCell>
-      <TableCell>
-        100
-      </TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>
-        2020-01-01
-      </TableCell>
-      <TableCell>
-        Lorem ipsum dolor
-      </TableCell>
-      <TableCell>
-        <Avatar text="John Doe" />
-      </TableCell>
-      <TableCell>
-        <Label
-          color="positive"
-          text="Sent"
-        />
-      </TableCell>
-      <TableCell>
-        100
-      </TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>
-        2020-01-01
-      </TableCell>
-      <TableCell>
-        Lorem ipsum dolor
-      </TableCell>
-      <TableCell>
-        <Avatar text="John Doe" />
-      </TableCell>
-      <TableCell>
-        <Label
-          color="positive"
-          text="Sent"
-        />
-      </TableCell>
-      <TableCell>
-        100
-      </TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>
-        2020-01-01
-      </TableCell>
-      <TableCell>
-        Lorem ipsum dolor
-      </TableCell>
-      <TableCell>
-        <Avatar text="John Doe" />
-      </TableCell>
-      <TableCell>
-        <Label
-          color="positive"
-          text="Sent"
-        />
-      </TableCell>
-      <TableCell>
-        100
-      </TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>
-        2020-01-01
-      </TableCell>
-      <TableCell>
-        Lorem ipsum dolor
-      </TableCell>
-      <TableCell>
-        <Avatar text="John Doe" />
-      </TableCell>
-      <TableCell>
-        <Label
-          color="positive"
-          text="Sent"
-        />
-      </TableCell>
-      <TableCell>
-        100
-      </TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>
-        2020-01-01
-      </TableCell>
-      <TableCell>
-        Lorem ipsum dolor
-      </TableCell>
-      <TableCell>
-        <Avatar text="John Doe" />
-      </TableCell>
-      <TableCell>
-        <Label
-          color="positive"
-          text="Sent"
-        />
-      </TableCell>
-      <TableCell>
-        100
-      </TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>
-        2020-01-01
-      </TableCell>
-      <TableCell>
-        Lorem ipsum dolor
-      </TableCell>
-      <TableCell>
-        <Avatar text="John Doe" />
-      </TableCell>
-      <TableCell>
-        <Label
-          color="positive"
-          text="Sent"
-        />
-      </TableCell>
-      <TableCell>
-        100
-      </TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>
-        2020-01-01
-      </TableCell>
-      <TableCell>
-        Lorem ipsum dolor
-      </TableCell>
-      <TableCell>
-        <Avatar text="John Doe" />
-      </TableCell>
-      <TableCell>
-        <Label
-          color="positive"
-          text="Sent"
-        />
-      </TableCell>
-      <TableCell>
-        100
-      </TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>
-        2020-01-01
-      </TableCell>
-      <TableCell>
-        Lorem ipsum dolor
-      </TableCell>
-      <TableCell>
-        <Avatar text="John Doe" />
-      </TableCell>
-      <TableCell>
-        <Label
-          color="positive"
-          text="Sent"
-        />
-      </TableCell>
-      <TableCell>
-        100
-      </TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>
-        2020-01-01
-      </TableCell>
-      <TableCell>
-        Lorem ipsum dolor
-      </TableCell>
-      <TableCell>
-        <Avatar text="John Doe" />
-      </TableCell>
-      <TableCell>
-        <Label
-          color="positive"
-          text="Sent"
-        />
-      </TableCell>
-      <TableCell>
-        100
-      </TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>
-        2020-01-01
-      </TableCell>
-      <TableCell>
-        Lorem ipsum dolor
-      </TableCell>
-      <TableCell>
-        <Avatar text="John Doe" />
-      </TableCell>
-      <TableCell>
-        <Label
-          color="positive"
-          text="Sent"
-        />
-      </TableCell>
-      <TableCell>
-        100
-      </TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>
-        2020-01-01
-      </TableCell>
-      <TableCell>
-        Lorem ipsum dolor
-      </TableCell>
-      <TableCell>
-        <Avatar text="John Doe" />
-      </TableCell>
-      <TableCell>
-        <Label
-          color="positive"
-          text="Sent"
-        />
-      </TableCell>
-      <TableCell>
-        100
-      </TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>
-        2020-01-01
-      </TableCell>
-      <TableCell>
-        Lorem ipsum dolor
-      </TableCell>
-      <TableCell>
-        <Avatar text="John Doe" />
-      </TableCell>
-      <TableCell>
-        <Label
-          color="positive"
-          text="Sent"
-        />
-      </TableCell>
-      <TableCell>
-        100
-      </TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>
-        2020-01-01
-      </TableCell>
-      <TableCell>
-        Lorem ipsum dolor
-      </TableCell>
-      <TableCell>
-        <Avatar text="John Doe" />
-      </TableCell>
-      <TableCell>
-        <Label
-          color="positive"
-          text="Sent"
-        />
-      </TableCell>
-      <TableCell>
-        100
-      </TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>
-        2023-03-03
-      </TableCell>
-      <TableCell>
-        This is the subject This is the subject This is the subject This is the subject This is the subject This is the subject
-      </TableCell>
-      <TableCell>
-        <Avatar text="Some Person" />
-      </TableCell>
-      <TableCell>
-        <Label
-          color="positive"
-          text="Sent"
-        />
-      </TableCell>
-      <TableCell>
-        999
-      </TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>
-        2022-02-02
-      </TableCell>
-      <TableCell>
-        This is the subject
-      </TableCell>
-      <TableCell>
-        <Avatar text="Other Name" />
-      </TableCell>
-      <TableCell>
-        <Label
-          color="positive"
-          text="Sent"
-        />
-      </TableCell>
-      <TableCell>
-        99
-      </TableCell>
-    </TableRow>
-  </TableBody>
-</Table>
-
-
-
-
-
-
-
+  return (
+    <div className="flex justify-center w-full px-4">
+      <div className="text-center">
+        <Text align="center" type="text2" className="whitespace-normal">
+          Este espacio de trabajo está vacío.
+        </Text>
+        <Text align="center" type="text2" className="whitespace-normal">
+          Agrega tableros, docs, formularios o paneles para empezar ahora.
+        </Text>
       </div>
     </div>
-  );*/
+  )
+
 };
 
-export default TableView
+export default observer(TableView)

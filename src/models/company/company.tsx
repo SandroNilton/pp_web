@@ -1,4 +1,4 @@
-import { IHeadquarter } from "./headquarter";
+import { IHeadquarter } from "./company/headquarter";
 
 export interface ICompany {
   id: string;

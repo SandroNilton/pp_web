@@ -2,10 +2,13 @@ import { action, makeObservable, observable, runInAction } from 'mobx';
 import { IBoard } from '../models/board/board';
 import { RootStore } from './rootStore';
 import agent from '../api/agent';
+import { IGeneralObjective } from '../models/board/generalObjective';
 
 export default class BoardStore {
   @observable boards: IBoard[] = [];
   @observable favorites: IBoard[] = [];
+  @observable board: IBoard | null = null;
+  @observable global: IGeneralObjective[] = [];
 
   rootStore: RootStore;
 
@@ -48,12 +51,13 @@ export default class BoardStore {
     }
   }
 
-  @action getDetailsBoard = async (id: string): Promise<IBoard> => {
+  @action getDetail = async (id: string): Promise<IBoard> => {
     try {
-      return await agent.Boards.details(id); 
+      this.board = await agent.Boards.detail(id);
+      return this.board;  
     } catch (error) {
       throw error;
     }
   }
-
+  
 }

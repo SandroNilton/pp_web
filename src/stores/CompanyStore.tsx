@@ -1,7 +1,7 @@
 import { action, makeObservable, observable, runInAction } from 'mobx';
 import { RootStore } from './rootStore';
 import agent from '../api/agent';
-import { ICompany } from '../models/company';
+import { ICompany } from '../models/company/company';
 
 export default class CompanyStore {
   @observable companies: ICompany[] = [];

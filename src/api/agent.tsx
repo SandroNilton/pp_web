@@ -1,11 +1,13 @@
 import { IBoard } from '../models/board/board';
-import { ICompany } from '../models/company';
+import { ICompany } from '../models/company/company';
 import { ISession, ISessionFormValues } from '../models/auth/session'; 
 import axios, { AxiosResponse } from 'axios';
 import { history } from '../App';
 import { toast } from '../components/common/toast/Toast'; 
 import { IMediaFormValues } from '../models/media';
-import Board from '../components/main/side/board/board';
+import { IBoardView } from '../models/board/boardView';
+import { IGeneralObjective } from '../models/board/generalObjective';
+import { IHeadquarter } from '../models/company/headquarter';
 
 axios.defaults.baseURL = 'https://localhost:5001/api';
 
@@ -61,25 +63,32 @@ const request = {
 const Boards = {
   list: (): Promise<IBoard[]> => request.get('/board'),
   favorite: (): Promise<IBoard[]> => request.get('/board/favorite'),
-  details: (id: string): Promise<IBoard> => request.get(`/board/${id}`),
+  detail: (id: string): Promise<IBoard> => request.get(`/board/${id}`),
   create: (board: IBoard) => request.post('/board', board),
   update: (board: IBoard) => request.put(`/board/${board.id}`, board),
   delete: (id: string) => request.delete(`/board/${id}`),
 }
 
 const BoardViews = {
-  create: (boardId: string, view: IBoard) => request.post(`/board/${boardId}/view`, view),
-  update: (boardId: string, view: IBoard) => request.put(`/board/${boardId}/view/${view.id}`, view),
-  delete: (boardId: string, id: string) => request.delete(`/board/${boardId}/view/${id}`),
+  list: (id: string): Promise<IBoardView[]> => request.get(`/boardview/${id}`),
+}
+
+const GeneralObjectives = {
+  list: (id: string): Promise<IGeneralObjective[]> => request.get(`/generalobjective/${id}`),
+  create: (generalObjective: IGeneralObjective) => request.post('/generalobjective', generalObjective),
 }
 
 const Companies = {
   list: (): Promise<ICompany[]> => request.get('/company'),
   global: (): Promise<ICompany[]> => request.get('/company/global'),
-  details: (id: string) => request.get(`/company/${id}`),
+  detail: (id: string) => request.get(`/company/${id}`),
   create: (company: ICompany) => request.post('/company', company),
   update: (company: ICompany) => request.put(`/company/${company.id}`, company),
   delete: (id: string) => request.delete(`/company/${id}`),
+}
+
+const Headquarters = {
+  create: (headquarter: IHeadquarter) => request.post('/headquarter', headquarter),
 }
 
 const Auth = {
@@ -90,6 +99,9 @@ const Auth = {
 
 export default {
   Boards,
+  BoardViews,
+  GeneralObjectives,
   Companies,
+  Headquarters,
   Auth,
 };

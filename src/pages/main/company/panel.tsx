@@ -1,7 +1,7 @@
   import { Button, Heading, Icon, IconButton, Search, Tooltip } from "@vibe/core";
   import React, { useContext, useState } from "react";
-  import ModalC from "./modal/modal";
-  import { ICompany } from "../../../models/company";
+  import ModalC from "./modal/modalC";
+  import { ICompany } from "../../../models/company/company";
   import { Comment, Info } from "@vibe/icons";
   import { Tab, TabList, TabPanel, Tabs } from "../../../components/common/tab/Tabs";
   import TableView from "./table/table";
@@ -55,7 +55,7 @@
                             <div className="border-none flex px-0 py-4">
                               <div className="p-0 m-0 flex items-center justify-start w-full">
                                 <div className="mr-[14px]">
-                                  <Button size="small" onClick={handleOpenModal}>Elemento nuevo</Button>
+                                  <Button size="small" onClick={handleOpenModal}>Nueva empresa</Button>
                                   <ModalC showModal={showModal} onClose={handleCloseModal} onCreateCompany={handleCreateCompany}/>
                                 </div>
                                 <div className="ml-0 w-full flex-1 overflow-x-auto scroll">

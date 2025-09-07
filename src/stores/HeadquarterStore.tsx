@@ -1,10 +1,9 @@
 import { action, makeObservable, observable, runInAction } from 'mobx';
 import { RootStore } from './rootStore';
 import agent from '../api/agent';
-import { IBoardView } from '../models/board/boardView';
+import { IHeadquarter } from '../models/company/headquarter';
 
-export default class BoardViewStore {
-  @observable boardViews: IBoardView[] = [];
+export default class HeadquarterStore {
 
   rootStore: RootStore;
 
@@ -13,13 +12,13 @@ export default class BoardViewStore {
     this.rootStore = rootStore;
   }
 
-  @action loadViewBoard = async (id: string) => {
+  @action createHeadquarter = async (values: IHeadquarter) => {
     try {
-      const response = await agent.BoardViews.list(id);
+      var response = await agent.Headquarters.create(values);
       runInAction(() => {
-        this.boardViews = response;
-      });
-    } catch (error) { 
+        return response;
+      })
+    } catch (error) {
       throw error;
     }
   }

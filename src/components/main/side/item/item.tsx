@@ -16,7 +16,7 @@ const Item: React.FC<ItemProps> = ({ route, label, board }) => {
 
   return (
     <Link to={route}>
-      <Button  onClick={() => console.log(board.name)} className={`gap-3 w-full flex items-center`} size="small" kind="tertiary" active={location.pathname === route}>
+      <Button className={`gap-3 w-full flex items-center`} size="small" kind="tertiary" active={location.pathname === route}>
         <Text maxLines={1} ellipsis={true} className='w-full'>{label}</Text>
       </Button>
     </Link>

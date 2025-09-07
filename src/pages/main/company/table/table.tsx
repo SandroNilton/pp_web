@@ -1,7 +1,7 @@
 import { Loader, Text } from "@vibe/core";
 import React, { useContext, useEffect, useState } from 'react';
 import { RootStoreContext } from '../../../../stores/rootStore';
-import { ICompany } from "../../../../models/company";
+import { ICompany } from "../../../../models/company/company";
 import { CompanySection } from "./companySection";
 
 const TableView = () => {

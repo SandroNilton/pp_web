@@ -7,7 +7,7 @@ const GanttView = () => {
     <div>
       <div className="py-2 flex justify-between">
           <div>
-            <Button size="small">Crear empresa</Button>
+            <Button size="small">Crear empresasssssss</Button>
           </div>
           <div>
             <Button size="small">Crear empresa</Button>

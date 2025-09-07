@@ -1,7 +1,6 @@
 import React, { useCallback, useContext, useEffect } from 'react';
 import { Modal, ModalHeader, ModalContent, ModalFooter, ModalBasicLayout } from "@vibe/core/next"; 
 import { Button, Flex, Heading } from '@vibe/core';
-import { ICompany } from '../../../../models/company';
 import { Form as FinalForm, Field } from "react-final-form";
 import { combineValidators, isRequired } from 'revalidate';
 import TextInput from '../../../../components/common/form/TextInput';
@@ -9,34 +8,38 @@ import { FORM_ERROR } from 'final-form';
 import { RootStoreContext } from '../../../../stores/rootStore';
 import { toast } from '../../../../components/common/toast/Toast'; 
 import { v4 as uuid } from 'uuid';
+import { IHeadquarter } from '../../../../models/company/headquarter';
 
-interface ModalCProps {
+interface ModalHProps {
+  company: string;
   showModal: boolean;
   onClose: () => void;
-  onCreateCompany: (company: ICompany) => void
+  onCreateHeadquarter: (headquarter: IHeadquarter) => void
 }
 
-const ModalC: React.FC<ModalCProps> = ({ showModal, onClose, onCreateCompany }) => {
+const ModalH: React.FC<ModalHProps> = ({ company, showModal, onClose, onCreateHeadquarter }) => {
 
   const validate = combineValidators({
-      ruc: isRequired('ruc'),
-      name : isRequired('name'),
-      str_activity: isRequired('str_activity'),
-      leg_representative: isRequired('leg_representative'),
-      eco_activity: isRequired('eco_activity'),
+      code: isRequired('code'),
+      address : isRequired('address'),
+      pahs: isRequired('pahs'),
+      icn: isRequired('icn'),
+      phone: isRequired('phone'),
+      email: isRequired('email')
   });
 
   const rootStore = useContext(RootStoreContext);
-  const { createCompany } = rootStore.companyStore;
+  const { createHeadquarter } = rootStore.headquarterStore;
 
-  const handleSubmitForm = async (values: ICompany) => {
+  const handleSubmitForm = async (values: IHeadquarter) => {
     values.id = uuid();
-    values.headquarters = [];
-    //return createCompany(values).catch((error) => ({[FORM_ERROR]: error}));
+    values.companyId = company;
+    values.areas = [];
+
     try {
-      await createCompany(values);
-      toast.push(`La empresa ${ values.name } se creo correctamente`, 'positive');      
-      onCreateCompany(values);
+      await createHeadquarter(values);
+      toast.push(`La sede ${ values.code } se creo correctamente`, 'positive');      
+      onCreateHeadquarter(values);
       onClose();
     } catch (error) {
       return { [FORM_ERROR]: error };
@@ -58,7 +61,7 @@ const ModalC: React.FC<ModalCProps> = ({ showModal, onClose, onCreateCompany }) 
           <FinalForm onSubmit={handleSubmitForm} validate={validate} render={({ handleSubmit, submitting, form }) => (
             <form onSubmit={handleSubmit} className="p-5 rounded-lg flex flex-col gap-4">
               <Flex direction="column" gap={8}>
-                <Field name="ruc" maxLength={11} component={TextInput} type="text" title="RUC" size="medium" placeholder="Elejir un RUC para tu empresa" />
+                <Field name="code" maxLength={11} component={TextInput} type="text" title="RUC" size="medium" placeholder="Elejir un RUC para tu empresa" />
                 <Field name="name" component={TextInput} type="text" title="Nombre de la empresa" size="medium" placeholder="Elejir un nombre para tu empresa" />
               </Flex>
               <Flex direction='column' gap={8}>
@@ -80,4 +83,4 @@ const ModalC: React.FC<ModalCProps> = ({ showModal, onClose, onCreateCompany }) 
 
 /**/
 
-export default ModalC;
+export default ModalH;
